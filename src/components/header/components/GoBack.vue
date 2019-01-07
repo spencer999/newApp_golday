@@ -3,7 +3,7 @@
 		<div class="flex goBack"> 
 			<span class="back" @click="goBack"> 返回 </span>
 			<h2 class="title"> {{this.subTitle}} </h2>
-			<i class="none"></i>
+			<i class="none"> </i>
 		</div>  
 	</section>
 </template>
