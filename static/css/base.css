@@ -49,11 +49,7 @@ table,td {
      
 /* CSS base */  
 /* 默认样式 */
-html,body{ 
-	overflow-x: hidden;   
-	width:100%;
-	/* height: 100%;  该样式使得fixed 的头部在uc 浏览器中随着滚动而滚动*/
-}
+ 
 body{   
     font-family:"Microsoft YaHei", sans-serif, "Helvetica Neue", Helvetica, Arial; 
     color: #666;
@@ -62,6 +58,8 @@ body{
     margin:0 auto; 
 	overflow-scrolling: touch;
 	 -webkit-overflow-scrolling: touch; /* ios5+  */
+	 width: 7.5rem;
+    margin: 0 auto;
 }
 a { 
     text-decoration: none;
