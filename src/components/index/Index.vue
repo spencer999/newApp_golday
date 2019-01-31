@@ -1,5 +1,7 @@
 <template>
 	<div class="index">
+		<!-- 2019新年红包雨-start -->
+		 <app-redBag></app-redBag>
 		<div class="banner">
 			<!-- 轮播组件 -->
 			<app-swiper></app-swiper>
@@ -131,6 +133,7 @@ import swiperText from './components/SwiperText'
 import bottom from './components/Bottom'
 import footer from '../footer/Footer'
 import pie from '../market/components/Pie'
+import newYearBag from '../activity/newYearBag'
 export default {
 	name: 'index',
 	data(){
@@ -233,12 +236,16 @@ export default {
     	'app-bottom':bottom,
     	'app-footer':footer,
     	'app-pie':pie,
+    	'app-redBag':newYearBag
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+	.index{
+		position:relative;
+	}
 	.downloadContainer,.gdContainer{
 		background:#fff;
 		padding-bottom:.6rem; 
