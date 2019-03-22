@@ -24,7 +24,7 @@ export default {
 	}
 	body{
 		background:#e8e8e8;
-		padding-bottom: 1rem;
+		 
 	}
 	/* 查看更多条 */
 	.lookMore{

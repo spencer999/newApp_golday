@@ -1,15 +1,15 @@
 <template>
 	<div class="index">
 		<!-- 2019新年红包雨-start -->
-		 <app-redBag></app-redBag>
+		<!--  <app-redBag></app-redBag> -->
 		<div class="banner">
 			<!-- 轮播组件 -->
 			<app-swiper></app-swiper>
 			<!-- 开户按钮 -->
 			<div class="flex openAccount">
 
-				<a href="https://www.golday.hk/Mobile/Activity/planm.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" target="_blank"><span>模拟开户</span></a> 
-				<a href="https://www.golday.hk/Mobile/Index/real_account.html" onclick="ga ('send','event','m_index','open_real_account','content_first');" target="_blank"><span class="two">真实开户</span></a>
+				<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" target="_blank"><span>模拟开户</span></a> 
+				<a href="https://www.golday.hk/Mobile/Index/real_accountt.html" onclick="ga ('send','event','m_index','open_real_account','content_first');" target="_blank"><span class="two">真实开户</span></a>
 			</div>
 		</div>
 		<!-- 最新公告 -->

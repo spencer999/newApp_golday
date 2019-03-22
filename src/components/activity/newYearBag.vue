@@ -98,12 +98,12 @@ export default{
 			sendJinShow:false,
 			controlRain:false,
 			type:null //获奖类型
-		}
+		} 
 	},
 	created(){
 		/*随机生成红包祝福语*/
 		let srcNum= parseInt(Math.random()*(6-1)+1);
-		this.blessingImg = 'static/img/fu'+srcNum+'.png';
+		this.blessingImg = 'static/img/fu'+srcNum+'.png' ;
 
 		//检查活动是否开始
 		this.$http.get("/Activity2019/RedBag201902/checkTime")
@@ -226,7 +226,7 @@ export default{
 			}
 			
 		},
-		changeSendJinShow(){ 
+		changeSendJinShow(){  
 			this.sendJinShow = !this.sendJinShow;
 		}, 
 		changeRuleShow(){ 
@@ -235,7 +235,7 @@ export default{
 		closeNewYearAct(){ 
 			this.newYearAct = false;
 		},  
-
+ 
 		
 
 	}
@@ -427,7 +427,7 @@ export default{
 	    margin-left: 2.3rem;
 	    text-align: center;
 	    width: 2rem;
-	    display: inline-block;
+	    display: inline-block; 
 	} 
 	.getBag .fitch{
 		font-size:.32rem;
