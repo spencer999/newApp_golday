@@ -133,7 +133,7 @@ import swiperText from './components/SwiperText'
 import bottom from './components/Bottom'
 import footer from '../footer/Footer'
 import pie from '../market/components/Pie'
-import newYearBag from '../activity/newYearBag'
+ 
 export default {
 	name: 'index',
 	data(){
@@ -184,7 +184,7 @@ export default {
 				.then((res)=>{   
 					let obj=res;  
 					for(let i in obj){ 
-						if(i != "QHKG"){
+						if(i != "QHKG" && obj[i].length != 0){
 							obj[i].splice(1,2);
 							obj[i].unshift(i); 
 							this.graphs.push(obj[i]) 	
@@ -236,7 +236,7 @@ export default {
     	'app-bottom':bottom,
     	'app-footer':footer,
     	'app-pie':pie,
-    	'app-redBag':newYearBag
+    	 
     }
 }
 </script>
@@ -340,7 +340,7 @@ export default {
 		vertical-align:middle;
 	}
 	.data{
-		width:1.65rem;
+		width:2rem;
 		height: 1.8rem;
 		background-color: #ffffff;
 		border-radius: 0.06rem;
