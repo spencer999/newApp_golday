@@ -8,8 +8,8 @@
 			<!-- 开户按钮 -->
 			<div class="flex openAccount">
 
-				<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" target="_blank"><span>模拟开户</span></a> 
-				<a href="https://www.golday.hk/Mobile/Index/real_accountt.html" onclick="ga ('send','event','m_index','open_real_account','content_first');" target="_blank"><span class="two">真实开户</span></a>
+				<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" ><span>模拟开户</span></a>
+				<a href="https://www.golday.hk/Mobile/Index/real_accountt.html" onclick="ga ('send','event','m_index','open_real_account','content_first');"><span class="two">真实开户</span></a>
 			</div>
 		</div>
 		<!-- 最新公告 -->
@@ -117,6 +117,15 @@
 			</div>
 		</section>
 
+    <section class="gdContainer" v-pre>
+      <!-- ——  金盛贵金属APP下载 —— -->
+      <h2 class="title"><i></i> 金盛贵金属APP下载 <i></i></h2>
+      <p class="tips">专业贵金属综合性交易软件</p>
+      <img class="phone app" src="./img/index_app.jpg" alt="MT4平台下载">
+
+    </section>
+
+
 		<section class="gdContainer">
 			<!-- ——  金盛·快而不凡 —— -->
 			<h2 class="title"><i></i> 金盛·快而不凡 <i></i></h2>
@@ -184,7 +193,7 @@ export default {
 				.then((res)=>{   
 					let obj=res;  
 					for(let i in obj){ 
-						if(i != "QHKG" && obj[i].length != 0){
+						if(i != "QHKG" && obj[i].length != 0 && obj[i]!=''){
 							obj[i].splice(1,2);
 							obj[i].unshift(i); 
 							this.graphs.push(obj[i]) 	
@@ -265,6 +274,10 @@ export default {
 		display:block;
 		margin:.3rem auto;
 	}
+  .app{
+    width:7.1rem;
+    height:3.97rem;
+  }
 	.table{
 		width:6.9rem;
 		margin:0 auto ;
@@ -321,7 +334,10 @@ export default {
 	.notice li{
 		width:100%;
 		line-height:.6rem;
-		font-size: 0.26rem; 
+		font-size: 0.26rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 	}
 	.title{ 
 		font-size: 0.44rem;  
@@ -384,7 +400,7 @@ export default {
 		top:0;
 		left:0;
 		width: 100%;
-		height:100;
+		height:100%;
 		font-size:.3rem;
 		color:#333;
 		line-height:2.5rem;
