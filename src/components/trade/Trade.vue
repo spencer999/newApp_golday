@@ -6,14 +6,14 @@
 		</div>
 		<div class="imageText flex">
 			<div class="items">
-				<a href="http://m.golday.hk/Mobile/Index/real_accountt.html">
+				<a href="https://m.golday.com/Mobile/Index/real_accountt.html">
 			 	<img class="pic" src="./img/trade1.png">
 			 	<p class="p1">真实开户</p> 
 				<p class="p2">加入金盛<br>领取开户礼包 </p>  
 				</a>
 			</div>
 			<div class="items">
-				<a href="http://m.golday.hk/Mobile/Activity/planmt.html">
+				<a href="https://www.golday.hk/Mobile/Activity/planmt.html">
 			 	<img class="pic" src="./img/trade2.png">
 			 	<p class="p1">模拟开户</p> 
 				<p class="p2">无风险体验 <br>贵金属交易</p>  

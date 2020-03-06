@@ -2,6 +2,8 @@
 	<div class="index">
 		<!-- 2019新年红包雨-start -->
 		<!--  <app-redBag></app-redBag> -->
+    <!-- 2020新年-start
+      <app-newYear></app-newYear>-->
 		<div class="banner">
 			<!-- 轮播组件 -->
 			<app-swiper></app-swiper>
@@ -9,13 +11,13 @@
 			<div class="flex openAccount">
 
 				<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" ><span>模拟开户</span></a>
-				<a href="https://www.golday.hk/Mobile/Index/real_accountt.html" onclick="ga ('send','event','m_index','open_real_account','content_first');"><span class="two">真实开户</span></a>
+				<a href="https://www.golday.com/Mobile/Index/real_accountt.html" onclick="ga ('send','event','m_index','open_real_account','content_first');"><span class="two">真实开户</span></a>
 			</div>
 		</div>
 		<!-- 最新公告 -->
 		<ul class="notice">
 			<router-link :to="{path:'/detail',query:{id:notice.id,title:'平台公告',type:1}}">
-			<li>最新公告 | {{notice.notice}}</li>
+			<li>最新公告 | {{notice.bt}}</li>
 			</router-link>
 		</ul>
 		<section class="marketContainer">
@@ -121,7 +123,7 @@
       <!-- ——  金盛贵金属APP下载 —— -->
       <h2 class="title"><i></i> 金盛贵金属APP下载 <i></i></h2>
       <p class="tips">专业贵金属综合性交易软件</p>
-      <img class="phone app" src="./img/index_app.jpg" alt="MT4平台下载">
+      <img class="phone app" src="./img/index_apps.jpg" alt="MT4平台下载">
 
     </section>
 
@@ -137,7 +139,7 @@
 </template>
 
 <script>
-import swiper from './components/Swiper'
+import swiper from './components/swiper'
 import swiperText from './components/SwiperText'
 import bottom from './components/Bottom'
 import footer from '../footer/Footer'
@@ -186,7 +188,7 @@ export default {
 			params.append("p",1);*/ 
 			this.$http.post('/Mobile/Index/ptgg',1) //最新公告
 				.then((res)=>{  
-					this.notice.notice = res.data[0].bt;
+					this.notice.bt = res.data[0].bt;
 					this.notice.id = res.data[0].id;
 				})
 			this.$http.get('/GetScript/getMGraphs') //实时行情
@@ -487,21 +489,26 @@ export default {
 		position:absolute;
 		bottom:.75rem;
 		left:0;
-		padding:0  1rem;
+		padding:0  .4rem;
+    z-index: 10;
 	}
 	.openAccount span{ 
-		width: 2.6rem;
-		height: 0.7rem;
-		border-radius: 0.06rem;
+		width: 3.18rem;
+		height: 0.8rem;
+		border-radius: 30px;clickZoom
 		border: solid 1px #fff; 
 		font-size: .3rem; 
-		color: #fff;
+		color: #ff5555;
 		text-align: center;
-		line-height:.7rem;
+		line-height:.8rem;
+    padding-left:.6rem;
+    background: #fff url("./img/demo.png")no-repeat left .6rem center;
+    background-size:.4rem .34rem;
 	}
 	.openAccount span.two{
 		background:#fff;
-		color: #666;
+    background: #fff url("./img/real.png")no-repeat left .6rem center;
+    background-size:.4rem .34rem;
 	}
 	.planContainer{
 		width:100%;

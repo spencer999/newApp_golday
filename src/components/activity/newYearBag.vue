@@ -180,6 +180,7 @@ export default{
 
 		},
 		/*账号输入，确认提交*/
+
 		comfirmUp(){
 			if(this.account.login ===''|| this.account.mobile === ""){
 				alert("请填写交易账号和手机号");

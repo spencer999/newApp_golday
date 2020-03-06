@@ -69,7 +69,7 @@
                 <p class="text">
                   点击下载Golday.apk安装到手机。或扫描右侧二维码下载
                 </p>
-                <img  class="icon" src="./img/download_02.jpg">
+                <img  class="icon" src="./img/download_01.png">
               </div>
               <a class="btn btn1" href="http://www.golday.hk/GoldayMT4.apk">立即下载</a>
             </div>

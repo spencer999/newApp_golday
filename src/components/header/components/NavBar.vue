@@ -40,7 +40,7 @@
  			</router-link>
 			</div>
 		</transition>
-		<div class="clickZoom" @click="show = !show"></div>
+		<!--<div class="clickZoom" @click="show = !show"></div>-->
 		<div class="arrow" @click="show = !show">
 			<i>导航</i> 
 			<transition  name="rotate-arrow">

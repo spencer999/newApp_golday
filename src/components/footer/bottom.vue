@@ -1,7 +1,7 @@
 <template> 	
 	<section class="bottom" v-if="show">
 		<span class="close" @click="show = !show"></span>
-		<span class="down" @click="goDownload" onclick="ga('send','event','m_index','download_app','content_bottom')"></span>
+    <a href="https://www.golday.hk/Home/Qr/download_QR.html"><span class="down"   onclick="ga('send','event','m_index','download_app','content_bottom')"></span></a>
 	</section>
 </template>
 
@@ -82,7 +82,7 @@ export default {
 	.bottom{
 		width:7.5rem;
 		height:1.02rem;
-		background:url("../../assets/download.png")no-repeat center;
+		background:url("../../assets/download1.png")no-repeat center;
 		background-size:7.5rem 1.02rem;
 		position:fixed;
 		bottom:0;

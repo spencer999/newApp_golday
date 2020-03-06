@@ -15,42 +15,44 @@ export default {
 	data () {
 	    return { 
             subTitle:'传啥接啥', 
-	    	detail:{},
+	    	    detail:{},
             id:1,
+            type:1,
             url:"/Mobile/Index/ptgg_detail",
 	    }
   	},
   	created(){
         this.id = this.$route.query.id;
         this.subTitle = this.$route.query.title;
-        if(this.$route.query.type == 1){
+        this.type = this.$route.query.type;
+        if(this.type == 1){
             this.url = "/Mobile/Index/ptgg_detail";
-        }else if(this.$route.query.type == 2){
+        }else if(this.type == 2){
             this.url = "/Mobile/Index/threeKnow_detail";
-        }else if(this.$route.query.type == 3){
+        }else if(this.type == 3){
             this.url = "/Mobile/Index/hybk_detail";
-        }else if(this.$route.query.type == 4){
+        }else if(this.type == 4){
             this.url = "/Mobile/Index/sskx_detail";
-        }else if(this.$route.query.type == 5){
+        }else if(this.type == 5){
             this.url = "/Mobile/Index/hqjd1_detail";
-        }else if(this.$route.query.type == 6){
+        }else if(this.type == 6){
             this.url = "/Mobile/Index/jsdp_detail";
-        }else if(this.$route.query.type == 7){
+        }else if(this.type == 7){
             this.url = "/Mobile/Index/spcl_detail";
-        }else if(this.$route.query.type == 8){
+        }else if(this.type == 8){
             this.url = "/Mobile/Index/jsxw_detail";
         } 
 
-		this.getData();
+		    this.getData();
   	},
   	methods:{
   		getData(){ 
            /* let params = new URLSearchParams();
             params.append('id',this.id );*/
   			this.$http.post(this.url,this.id)
-  				.then((res)=>{ 
-                    console.log(res);
-  					this.detail = res.data; 
+  				.then((res)=>{
+  				  console.log(res);
+            this.detail = res.data;
   				});
   		}, 
   	},
