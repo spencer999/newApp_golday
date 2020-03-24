@@ -82,7 +82,7 @@ export default {
 	.bottom{
 		width:7.5rem;
 		height:1.02rem;
-		background:url("../../assets/download1.png")no-repeat center;
+		background:url("../../assets/download20.png")no-repeat center;
 		background-size:7.5rem 1.02rem;
 		position:fixed;
 		bottom:0;
