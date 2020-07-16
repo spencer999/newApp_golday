@@ -25,7 +25,7 @@
 				<p class="p2" v-html="item.desc"> </p>  
 			</router-link> 
 			<div class="items">
-				<a href="http://vip.golday.hk/Mobile/Index/login.html">
+				<a href="https://vip.golday.hk/Mobile/Index/login.html">
 			 	<img class="pic" src="./img/trade4.png">
 			 	<p class="p1">资金存取</p> 
 				<p class="p2">灵活存取 <br> 无需担心资金安全</p>  
@@ -58,7 +58,7 @@ export default {
 	    		},
 	    		{
 	    			tag:"交易规则",
-	    			desc:"综合点差优惠 <br> 高达40美元/手",
+	    			desc:"综合点差优惠 <br> 高达38美元/手",
 	    			src:trade5,
 	    			path:'/trade/rules'
 	    		} 

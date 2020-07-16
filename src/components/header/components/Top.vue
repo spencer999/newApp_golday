@@ -6,8 +6,8 @@
  			</router-link>
  			<div class="font0">
         <span class="entry bgLive"> <a href="http://www.golday666.com/mobile.php?fTag=1" onclick="ga ('send','event','m_index',' live ','content_first');" target="_blank"> 直播间 </a></span>
-        <span class="entry bg800"> <a href="http://chat10.live800.com/live800/chatClient/chatbox.jsp?companyID=449478&configID=230423&jid=8152728285" onclick="ga ('send','event','m_index',' chat_live800 ','content_first');" target="_blank"> 客服 </a></span>
- 				<span class="entry bgLogin"> <a href="http://vip.golday.hk/Mobile/Index/login.html" onclick="ga ('send','event','m_index',' login ','content_first');" target="_blank"> 存取款登录 </a></span>
+        <span class="entry bg800"> <a href="https://chat10.live800.com/live800/chatClient/chatbox.jsp?companyID=449478&configID=230423&jid=8152728285" onclick="ga ('send','event','m_index',' chat_live800 ','content_first');" target="_blank"> 客服 </a></span>
+ 				<span class="entry bgLogin"> <a href="https://vip.golday.hk/Mobile/Index/login.html" onclick="ga ('send','event','m_index',' login ','content_first');" target="_blank"> 存取款登录 </a></span>
  			</div>
  		</div> 
 	</section> 

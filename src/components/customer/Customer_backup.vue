@@ -2,7 +2,12 @@
 	<div class="customer"> 
 		<div class="container nav">
       <div class="flex">
-
+               <!-- <div class="item">
+                    <a href="https://m.golday.com/Mobile/Index/mall.html">
+                    <img class="pic" src="./img/customer_03.jpg">
+                    <span class="navName">积分商城</span>
+                    </a>
+                </div>-->
                 <router-link tag="div" class="item" v-for="(item,index) in navList" :to="item.path" :key="index">
                      <img class="pic" :src="item.image">
                      <span class="navName">{{item.name}}</span>
@@ -14,7 +19,28 @@
             </div>
         </div>
         <!-- 积分商城板块 -->
-
+    <!-- <div class="container">
+            <h2 class="topTitle"> <i></i>  积分商城 <i></i> </h2>
+            <p class="p1">有积分，任性兑</p>
+            <img class="gift" src="./img/customer_28.jpg" alt="积分商城">
+            <div class="flex goods">
+                <div class="good">
+                    <span>猫王收音机</span>
+                    <img src="./img/customer_32.jpg" alt="积分商城">
+                </div>
+                <div class="good">
+                    <span>扫地机器人</span>
+                    <img src="./img/customer_34.jpg" alt="积分商城">
+                </div>
+                <div class="good">
+                    <span>戴森吹风机</span>
+                    <img src="./img/customer_36.jpg" alt="积分商城">
+                </div>
+            </div>
+            <a href="https://m.golday.com/Mobile/Index/mall.html">
+                <div class="lookMore"><img src="../../assets/more.png" alt="查看更多"> <i>查看更多</i></div>
+            </a>
+        </div> -->
         <!-- 最新优惠板块 -->
 		<div class="container" v-if="discount.bt">
 			<h2 class="topTitle"> <i></i>  最新优惠 <i></i> </h2>

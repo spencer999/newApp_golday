@@ -153,7 +153,10 @@ export default {
 			circle2:"75%",
 			tabIndex:0,
 			banner:[],
-			notice:{},
+			notice:{
+			  bt:null,
+        id:null
+      },
 			graphs:[],
 			operation:{},
 			plans:[
@@ -188,19 +191,21 @@ export default {
 			params.append("p",1);*/ 
 			this.$http.post('/Mobile/Index/ptgg',1) //最新公告
 				.then((res)=>{  
-					this.notice.bt = res.data[0].bt;
-					this.notice.id = res.data[0].id;
+					this.notice.bt = res.data.bt;
+					this.notice.id = res.data.id;
 				})
 			this.$http.get('/GetScript/getMGraphs') //实时行情
 				.then((res)=>{   
-					let obj=res;  
-					for(let i in obj){ 
-						if(i != "QHKG" && obj[i].length != 0 && obj[i]!=''){
-							obj[i].splice(1,2);
-							obj[i].unshift(i); 
-							this.graphs.push(obj[i]) 	
-						} 
-					} 
+					let obj=res;
+          for(let i in obj){
+            if(i.indexOf(2) == -1){
+              if(i != "QHKG" && obj[i].length != 0){
+                obj[i].splice(1,2);
+                obj[i].unshift(i);
+                this.graphs.push(obj[i])
+              }
+            }
+          }
 				});
 			this.$http.get("/Mobile/Index/czjy")  //伦敦金多头空头
 	  			.then((res)=>{   
@@ -359,7 +364,7 @@ export default {
 	}
 	.data{
 		width:2rem;
-		height: 1.8rem;
+		height: 1.9rem;
 		background-color: #ffffff;
 		border-radius: 0.06rem;
 		text-align: center;
