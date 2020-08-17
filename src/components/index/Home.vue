@@ -6,13 +6,11 @@
 </template>
 
 <script>
-import header from '../header/Header'
-import footer from '../footer/Footer'
+import header from '../header/Header' 
 export default {
 	name: 'home',
 	components:{
-		'app-header':header, 
-		'app-footer':footer, 
+		'app-header':header,  
 	}
 }
 </script> 

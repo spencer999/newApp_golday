@@ -1,181 +1,142 @@
 <template>
-	<div class="index">
-		<!-- 2019新年红包雨-start -->
-		<!--  <app-redBag></app-redBag> -->
-    <!-- 2020新年-start
-      <app-newYear></app-newYear>-->
-		<div class="banner">
-			<!-- 轮播组件 -->
-			<app-swiper></app-swiper>
-			<!-- 开户按钮 -->
-			<div class="flex openAccount">
+	<div class="index"> 
+		<!-- 轮播组件 -->
+		<div class="banner"> 
+			<app-swiper></app-swiper> 
+		</div>
+		<!-- 上方导航块 -->
 
-				<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" ><span>模拟开户</span></a>
-				<a href="https://www.golday.com/Mobile/Index/real_accountt.html" onclick="ga ('send','event','m_index','open_real_account','content_first');"><span class="two">真实开户</span></a>
-			</div>
+		<div class="flex nav">
+ 			<!-- <router-link class="navItem" tag="div" to="/aboutGolday">
+ 				<img class="pic" src="../img/nav1.png">
+ 				<span class="navName">关于金盛</span>
+ 			</router-link> -->
+ 			<router-link class="navItem" tag="div" to="/customer/discount">
+ 				<img class="pic" src="./img/nav1.png">
+ 				<span class="navName">优惠活动</span>
+ 			</router-link>
+ 			<router-link class="navItem" tag="div" to="/trade/classify">
+ 				<img class="pic" src="./img/nav2.png">
+ 				<span class="navName">交易产品</span>
+ 			</router-link>
+ 			<router-link class="navItem" tag="div" to="/trade/rules">
+ 				<img class="pic" src="./img/nav3.png">
+ 				<span class="navName">交易细则</span>
+ 			</router-link>
+ 			<router-link class="navItem" tag="div" to="/trade/download">
+ 				<img class="pic" src="./img/nav4.png">
+ 				<span class="navName">平台下载</span>
+ 			</router-link>
+ 			<div class="navItem">
+ 				<a href="https://vip.golday.hk/Mobile/Index/login.html">
+ 					<img class="pic" src="./img/nav5.png">
+ 					<span class="navName">用户中心</span>
+ 				</a>
+ 			</div> 
+ 			<router-link class="navItem" tag="div" to="/customer/school">
+ 				<img class="pic" src="./img/nav6.png">
+ 				<span class="navName">金盛课堂</span>
+ 			</router-link>
+ 			  
+ 			<router-link class="navItem" tag="div" to="/help">
+ 				<img class="pic" src="./img/nav7.png">
+ 				<span class="navName">常见问题</span>
+ 			</router-link>
+ 			<router-link class="navItem" tag="div" to="/help">
+ 				<img class="pic" src="./img/nav8.png">
+ 				<span class="navName">用户之声</span>
+ 			</router-link>
+		</div>
+		<!-- 开户按钮 -->
+		<div class="flex openAccount">
+
+			<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" ><img src="./img/demoimg.png" alt=""><span>模拟开户</span></a>
+			<a href="https://www.golday.com/Mobile/Index/real_accountt.html" class="two" onclick="ga ('send','event','m_index','open_real_account','content_first');"><img src="./img/realimg.png" alt=""><span >真实开户</span></a>
 		</div>
 		<!-- 最新公告 -->
 		<ul class="notice">
 			<router-link :to="{path:'/detail',query:{id:notice.id,title:'平台公告',type:1}}">
 			<li>最新公告 | {{notice.bt}}</li>
 			</router-link>
-		</ul>
-		<section class="marketContainer">
+		</ul> 
 			<!-- —— 行情中心 —— -->
 			<h2 class="title"> <i></i>  行情中心 <i></i> </h2>
-			<div class="flex">
-				<div class="data" :class="{'green':item[2] < 0}"  v-for="(item,index) in graphs" :key="index"> 
-					<p class="name">{{item[0] | toTxt}}</p>
-					<p class="num">{{item[1]}}</p>
-					<p class="rate">{{item[2]}} {{item[2] | getT}} </p>
-					<p class="rate">({{item[3]}}) </p>
-				</div>
+		<div class="flex pd30">
+			<div class="data" :class="{'green':item[1] == 0}"  v-for="(item,index) in graphs" :key="index"> 
+				<p class="name">{{item[0] | toTxt}}</p>
+				<p class="num">{{item[2]}} {{item[1] | getT}}</p>
+				<p class="rate">{{item[3]}}  </p>
 				 
 			</div>
-			<!-- 多空比例 -->
-			<h3 class="subtitle">多空比例</h3>
-			<div class="flex">
-				<div class="ratio"> 
-					<div class="graphic">
-						<p class="graphicT">伦敦金</p>
-						<app-pie :more="morej" :less="lessj" :circle1="circle1" :circle2="circle2">	</app-pie>
-					</div>
-					<div class="flex">
-						<div class="tip">
-							<p class="name">多头</p>
-							<span class="bg bgRed"></span>
-							<p class="digitR">{{morej}}%</p>
-						</div>
-						<div class="tip none">
-							<p class="name">空头</p>
-							<span class="bg bgGreen"></span>
-							<p class="digitG">{{lessj}}%</p>
-						</div>
-					</div>
-				</div>
-				<div class="ratio"> 
-					<div class="graphic">
-						<p class="graphicT">伦敦银</p>
-						<app-pie :more="morey" :less="lessy" :circle1="circle1" :circle2="circle2">	</app-pie>
-					</div>
-					<div class="flex">
-						<div class="tip">
-							<p class="name">多头</p>
-							<span class="bg bgRed"></span>
-							<p class="digitR">{{morey}}%</p>
-						</div>
-						<div class="tip none">
-							<p class="name">空头</p>
-							<span class="bg bgGreen"></span>
-							<p class="digitG">{{lessy}}%</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<p class="txRight">以上建议仅供参考，不作为投资唯一依据</p>
-
-			<!-- 操作建议 -->
-			<h2 class="subtitle">操作建议</h2>
-			<div class="flex"> 
-				<div class="advise">
-					<p class="h1">{{operation.llgbt}}</p>
-					<p class="adDetail">上方阻力：{{operation.llgzlw}}</p>
-					<p class="adDetail">下方支撑：{{operation.llgzcw}}</p>
-				</div>
-				<div class="advise">
-					<p class="h1">{{operation.llsbt}}</p>
-					<p class="adDetail">上方阻力：{{operation.llszlw}}</p>
-					<p class="adDetail">下方支撑：{{operation.llszcw}}</p>
-				</div>
-				<router-link to="/market/GoldTech" class="more"><img src="../../assets/more.png" alt="查看更多"> <i>查看更多</i></router-link>
+			 
+		</div> 
+		<!-- 实时交易参考 -->
+		<section class="section">
+			<div class="titleBox1">
+				<h2 class="title"> <i></i>  实时交易参考 <i></i> </h2>
 			</div>
 		</section>
-		<section class="planContainer">
-			<!-- —— 投资者保障计划 —— -->
-			<img class="planBg" src="./img/index2.jpg" alt="">
-			<h2 class="title"><i></i> 投资者保障计划 <i></i></h2>
-			<div class="flex plans">
-				<div class="plan" v-for="(item,index) in plans" :key="index" :class="{'active':index==tabIndex}" @click="tabPlan(index)"> 
-					<p>{{item.t1}}<br>{{item.t2}}</p>
-				</div> 
+		<!-- ——  平台下载 —— -->
+		<section class="section">
+			<div class="titleBox3">
+				<h2 class="title"> <i></i>  平台下载 <i></i> </h2>
 			</div>
-			<transition-group name="fade-desc"> 
-				<div class="desc" :class="'desc'+index" v-for="(item,index) in descs" :key="index" v-show="index === tabIndex">{{item}} </div>
-			</transition-group>
-		</section>
-
-		<section class="downloadContainer" v-pre>
-			<!-- ——  MT4平台下载 —— -->
-			<h2 class="title"><i></i> MT4平台下载 <i></i></h2>
-			<p class="tips">国际通用 90%交易载体</p>
-			<img class="phone" src="./img/index4.jpg" alt="MT4平台下载">
-			<table class="table">
-				<tr><td><img src="./img/index_09.jpg" alt=""><i>18</i> <br>种划线工具 </td><td><img src="./img/index_11.jpg" alt=""><p><i>9</i><br>种交易时段图表</p></td></tr>
-				<tr><td><img src="./img/index_15.jpg" alt=""><p><i>30</i><br>种国际流行指标</p></td><td><img src="./img/index_17.jpg" alt=""><p><i>N</i><br>种自定义功能</p></td></tr>
-			</table>
-			<div class="flex download">
-				<a href="https://itunes.apple.com/cn/app/metatrader-4/id496212596?mt=8" onclick="ga ('send','event','m_index',' download_ios ','content_first');" > <span>IOS版下载</span></a>
-				<a href="http://www.golday.hk/GoldayMT4.apk" onclick="ga ('send','event','m_index',' download_android ','content_second');"><span>Android版下载</span></a> 
+			<div class="downloadTab">
+				<div class="tab a1" :class="{'active':download === true}" @click="tabDownload()">
+					<p class="p1">APP下载</p>
+					<p class="p2">指尖交易让赚钱更简单</p>
+				</div>
+				<div class="tab a2" :class="{'active':download === false}" @click="tabDownload()">
+					<p class="p1">MT4平台下载</p>
+					<p class="p2">国际通用交易软件</p>
+				</div>
+			</div>
+			<div class="downloadBox">
+				<div class="download" v-if="download">
+					<p class="left">
+						<b class="big">金盛贵金属APP</b> <b class="ruby">集开户、交易、存取款、实时报价、行情播报、专家分析、客服咨询</b> 等功能于一身，随时随地手机交易，即时把握最佳盈利时机！ 
+					</p>
+					<img class="right" src="./img/downapp.png" alt="">
+				</div>
+				<div class="download" v-if="!download">
+					<img class="mt4img" src="./img/downmt4.jpg" alt="">
+				</div>
+			</div>
+			<div class="flex appandriod">
+				<span><img src="./img/apple.png" alt=""> iOS 下载</span>
+				<span><img src="./img/Android.png" alt="">  Android 下载</span>
 			</div>
 		</section>
-
-    <section class="gdContainer" v-pre>
-      <!-- ——  金盛贵金属APP下载 —— -->
-      <h2 class="title"><i></i> 金盛贵金属APP下载 <i></i></h2>
-      <p class="tips">专业贵金属综合性交易软件</p>
-      <img class="phone app" src="./img/index_apps.jpg" alt="MT4平台下载">
-
-    </section>
-
-
-		<section class="gdContainer">
-			<!-- ——  金盛·快而不凡 —— -->
-			<h2 class="title"><i></i> 金盛·快而不凡 <i></i></h2>
-			<p class="tips">让您体验极致交易快感</p> 
-			<app-swiperText></app-swiperText>
+		<!-- ——  关于我们 —— -->
+		<section class="section">  
+			<div class="titleBox4">
+				<h2 class="title"> <i></i>  关于我们 <i></i> </h2>
+			</div>
+			<div class="aboutus">
+				<h3>6年稳健运营<br>香港金银业贸易场AA类会员047号行员</h3>
+				<p>金盛贵金属(www.golday.com)自成立以来，先后荣获 【最具投资者信赖】、【行业类十佳企业奖】、【最具创新大奖】、【创新应用系统奖】、【年度优秀交易平台】等多项荣誉，足以彰显金盛贵金属的资质和综合实力，且单笔交易0.1手以上均提供【交易编码】，有据可查，保证所有交易公开透明，受到行业和投资者的充分认可与肯定。</p>
+			</div>
 		</section>
-		<app-bottom></app-bottom> 
+		 
+
+		<app-bottom></app-bottom>
 	</div> 
 </template>
 
 <script>
-import swiper from './components/swiper'
-import swiperText from './components/SwiperText'
-import bottom from './components/Bottom'
-import footer from '../footer/Footer'
-import pie from '../market/components/Pie'
+import swiper from './components/swiper' 
+import bottom from './components/Bottom'  
  
 export default {
 	name: 'index',
 	data(){
-		return{
-			circle1:"60%",
-			circle2:"75%",
-			tabIndex:0,
-			banner:[],
+		return{ 
+			download:true, 
 			notice:{
-			  bt:null,
-        id:null
-      },
-			graphs:[],
-			operation:{},
-			plans:[
-				{
-					t1:"提供无负数",
-					t2:"结余保障"
-				},{
-					t1:"国际标准网络",
-					t2:"安全技术"
-				},{
-					t1:"保护客户",
-					t2:"个人隐私"
-				}
-			],
-			descs:["为了让客户可以安心交易，金盛贵金属为客户提供「无负数结余保证」*，客户的交易账户将不会出现负数结余，并无须支付因此而产生的额外欠款*只适用于个人客户" ,"为确保客户可安心在网上进行各项交易，金盛贵金属已采用符合国际标准的网上编码技术，再配合其它专为互联网及网上交易而设的安保措施，可对抗各类型网络攻击及黑客行为，防止未经授权的登入和交易。" ,"金盛贵金属一直严格遵守由香港法定机构所颁布的私隐条例，更内部制定严谨的客户资料处理程序，所有客户资料及交易纪录均作高度保密及加密处理，防止个人资料外泄。 " ],
-			morej:0,
-	    	lessj:0 ,
-	    	morey:0,
-	    	lessy:0 
+			 	bt:null,
+        		id:null
+      		},
+			graphs:[],  
 		}
 	}, 
 	created(){   
@@ -183,42 +144,37 @@ export default {
 	}, 
 	methods:{
 
-		tabPlan(index){
-			this.tabIndex =index;
+		tabDownload(){
+			this.download = !this.download;
 		},
 		getDatas(){
 			/*let params = new URLSearchParams();
 			params.append("p",1);*/ 
 			this.$http.post('/Mobile/Index/ptgg',1) //最新公告
 				.then((res)=>{  
-					this.notice.bt = res.data.bt;
-					this.notice.id = res.data.id;
+					this.notice  = res.data[0]; 
 				})
 			this.$http.get('/GetScript/getMGraphs') //实时行情
 				.then((res)=>{   
 					let obj=res;
-          for(let i in obj){
-            if(i.indexOf(2) == -1){
-              if(i != "QHKG" && obj[i].length != 0){
-                obj[i].splice(1,2);
-                obj[i].unshift(i);
-                this.graphs.push(obj[i])
-              }
-            }
-          }
+					console.log(obj);
+          			for(let i in obj){
+			            if(i.indexOf(2) != -1){  
+			                console.log(obj[i][1]);
+							if(obj[i][1].indexOf("-") != -1){
+			            		obj[i].unshift(0);
+			            	}else{
+			            		obj[i].unshift(1);
+			            	}
+
+			            	 obj[i].unshift(i);
+			                this.graphs.push(obj[i])
+			              
+			            }
+          			}
 				});
-			this.$http.get("/Mobile/Index/czjy")  //伦敦金多头空头
-	  			.then((res)=>{   
-	  				this.morej = res.data.llgkd;  
-	  				this.lessj = res.data.llgkk;
-	  				this.morey = res.data.llskd;  
-	  				this.lessy = res.data.llskk;  
-	  				
-	  			})
-			this.$http.get('/Mobile/Index/czjy') //操作建议
-				.then((res)=>{ 
-					this.operation = res.data;
-				})
+			 
+			 
 
 			
 		}
@@ -226,32 +182,29 @@ export default {
 	filters:{
 		toTxt:(value)=>{
 			let txt;
-			if(value == 'QLLG'){
+			if(value == 'QLLG2'){
 				txt = "伦敦金";
-			}else if(value == 'QLLS'){
+			}else if(value == 'QLLS2'){
 				txt = "伦敦银";
-			}else if(value == 'QUSDX' ){
+			}else if(value == 'QUSDX2' ){
 				txt = "美元指数";
-			}else if(value == 'QCL' ){
+			}else if(value == 'QC2L' ){
 				txt = "纽约原油";
 			}
 			return txt;
 		},
 		getT:(value)=>{ 
-			if(value > 0){
-				return "▲";
-			}else if(value < 0){
-				return "▼";
+			if(value  == 1){
+				return "↑";
+			}else if(value  == 0){
+				return "↓";
 			}
 			  
 		}
 	},
     components:{
-    	'app-swiper':swiper,
-    	'app-swiperText':swiperText,
-    	'app-bottom':bottom,
-    	'app-footer':footer,
-    	'app-pie':pie,
+    	'app-swiper':swiper, 
+    	'app-bottom':bottom, 
     	 
     }
 }
@@ -259,74 +212,118 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.index{
-		position:relative;
-	}
-	.downloadContainer,.gdContainer{
-		background:#fff;
-		padding-bottom:.6rem; 
-	}
-	.gdContainer{
-		margin-top:.22rem;
-	}
-	.tips{
-		text-align: center;
-		font-size: 0.26rem; 
-		color: #999;
-		margin-top:-.3rem;
-	}
-	.phone{
-		width:6.27rem;
-		height:4.42rem;
-		display:block;
+	.downloadTab{
+		width: 6.4rem;
+		height: 1rem;
 		margin:.3rem auto;
+		background-color: #ffffff;
+		border-radius: 7px;
+		border: solid 0.02rem #ff5555;
+		font-size: 0;
 	}
-  .app{
-    width:7.1rem;
-    height:3.97rem;
-  }
-	.table{
-		width:6.9rem;
-		margin:0 auto ;
-		border:1px solid #f2f2f2; 
+	.downloadTab .tab{
+		display: inline-block;
+		width: 3.18rem;
+		height: .98rem;
+		text-align: center;
+		padding-top:.1rem;
+		color: #ff5555;
 	}
-	.table img{
-		width:.86rem;
-		height:.75rem;
-		float:left;
-		vertical-align:middle;
-		margin-right:.1rem;
+	.downloadTab .tab .p2{
+		font-size:.24rem; 
+		opacity: 0.8;
 	}
-	.table i{
-		font-size:.32rem;
+	.downloadTab .tab .p1{
+		font-size:.32rem; 
 	}
-	.table td{
-		font-size: 0.26rem;
-		height:1.18rem;
-		padding-left:.3rem;
-		border:1px solid #f2f2f2;
-		vertical-align:middle;
+	.downloadTab .tab.active{
+		background-color: #ff5555;
+		color:#fff;
+	}
+	.downloadTab .a1.active{
+		border-radius: 7px 0rem 0rem 7px;
+	}
+	.downloadTab .a2.active{
+		border-radius: 0px 7px  7px 0;
 	}
 	.download{
-		padding:0 .96rem;
+		width:100%;
+		height: 5.43rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding:0 .3rem;
 	}
-	.download span{
-		width: 2.6rem;
-		height: 0.7rem;
-		line-height:.7rem;
+	.download .mt4img{
+		width:6.9rem ;  
+	}
+	.download .right{
+		width: 3.44rem;
+		height: 4.3rem;
+	}
+	.download .left{
+		margin-right: .3rem;
+		font-size: 0.28rem;
+		color:#333;
+		vertical-align:middle;
+		line-height: .45rem;
+		display: inline-block;
+	}
+	.download .big{
+		font-size: 0.4rem;
+		color:#333; 
+	}
+	.download .ruby{
+		font-size: 0.28rem;
+		color: #ff5555;
+	}
+	.appandriod{padding:0 .3rem;}
+	.appandriod span{
+		width: 3.35rem;
+		height: 0.78rem;
+		line-height: .78rem;
 		text-align: center;
 		font-size: 0.3rem;
-		background-color: #f6f6f6;
+		color:#fff;
+		background-color: #cca95e;
 		border-radius: 0.06rem;
-		border: solid 0.02rem #999999;
 	}
-
-
-	.marketContainer{
+	.appandriod img{
+		width:.28rem;
+		height: .34rem;
+		vertical-align: middle;
+		margin-right:.1rem;
+	}
+	.index{
+		position:relative; 
+	}
+	.section{
 		width:100%;
-		padding: 0 .3rem;
-		background:#e8e8e8;
-		padding-bottom:.4rem;
+		margin:.2rem auto;
+		background: #fff;
+		padding-bottom: .4rem;
+	}
+	.pd30{padding:.2rem .3rem;} 
+	.nav{
+		width:100%;
+		padding: 0 .3rem .3rem;
+   		 margin-top: .2rem;
+		background:#fff; 
+		box-shadow: 0 0 4px rgba(0,0,0,.2);
+		-webkit-box-shadow: 0 0 4px rgba(0,0,0,.2);
+	}
+ 	.nav .pic{
+		width:.62rem; 
+	}
+	.nav .navItem{
+		width:1.5rem;
+		text-align: center;
+		font-size: 0;
+		margin-top:.45rem;
+	}
+	.nav .navName{
+		font-size:.26rem;
+		margin-top:.25rem;
 	}
 	.notice{
 		width:100%;
@@ -334,295 +331,123 @@ export default {
 		background-color: #fff;
 		color: #ff5555;
 		padding:0 .3rem;
-		position:relative;
-		margin-top:.2rem;
+		position:relative; 
 		line-height:.6rem;
 	}
 	.notice li{
 		width:100%;
 		line-height:.6rem;
 		font-size: 0.26rem;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+	    overflow: hidden;
+	    text-overflow:ellipsis;
+	    white-space:nowrap;
 	}
 	.title{ 
 		font-size: 0.44rem;  
-		color: #000;
+		color: #fff;
 		text-align: center;  
 		text-align: center;
-		padding:.4rem 0 .3rem;  
+		padding:.4rem 0;  
 		position: relative;
 	} 
 	.title i{
 		display:inline-block;
 		width: 0.7rem;
 		height: 0.02rem; 
-		background-color: #666666;
+		background-color: #fff;
 		border-radius: 0.01rem; 
 		vertical-align:middle;
 	}
 	.data{
-		width:2rem;
-		height: 1.9rem;
+		width: 2.2rem;
+		height: 1.31rem;
 		background-color: #ffffff;
 		border-radius: 0.06rem;
 		text-align: center;
-		padding: .2rem 0;
-		color: #e84848; 
+		padding: .15rem 0;
+		color: #ff3334; 
 	} 
 	.data.green{
-		color: #00a003;
+		color: #34cc99;
 	}
 	.data .name{
-		font-size: .26rem;
-		color:#666;  
+		font-size: .24rem;
+		color:#333;  
 	}
 	.data .num{
-		font-size: .3rem;
-		margin-top:.1rem;
+		font-size: .32rem;
+		/* margin-top:.1rem; */
 		font-weight:bold; 
 	}
 	.data .rate{
 		font-size: .22rem; 
 	}
-	.subtitle{
-		font-size: 0.3rem; 
-		color: #333333;
-		margin:.3rem 0 .2rem .15rem;
-	}
-	.ratio{
-		width:3.4rem; 
-		height: 3.6rem;
-		background-color: #ffffff;
-		border-radius: 0.06rem;
-	}
-	.graphic{
-		width: 100%; 
-		margin:.1rem auto 0;
-		position:relative;
-	}
-	.graphicT{
-		position:absolute;
-		top:0;
-		left:0;
-		width: 100%;
-		height:100%;
-		font-size:.3rem;
-		color:#333;
-		line-height:2.5rem;
-		text-align: center;
-	}
-	.tip{
-		width:49%;
-		border-right:.02rem solid #d7d7d7;
-		text-align: center;
-		font-size:0;  
-	}
-	.tip.none{
-		border:none;
-	}
-	.tip .name{
-		font-size:.26rem;
-	}
-	.tip .bg{
-		width: 0.8rem;
-		height: 0.08rem;
-		background-color: #e84848;
-		border-radius: 0.04rem;
-		margin:.05rem 0 .02rem ;
-	}
-	.tip .bgRed{ 
-		background-color: #e84848; 
-	}
-	.tip .bgGreen{ 
-		background-color: #00a003; 
-	}
-	.tip .digitR{
-		font-size: 0.26rem; 
-		color: #e84848;
-	}
-	.tip .digitG{
-		font-size: 0.26rem; 
-		color: #00a003;
-	}
-	.txRight{
-		font-size: 0.22rem; 
-		line-height: .55rem; 
-		color: #666666;
-		text-align: right;
-	}
-	.advise{
-		width:100%;
-		height: 1.6rem;
-		background-color: #ffffff;
-		border-radius: 0.06rem;
-		padding:.2rem .3rem;
-		margin-bottom:.2rem;
-	}
-	.advise .h1{
-		font-size: 0.26rem; 
-		color: #333333;
-		margin-bottom:.1rem;
-	}
-	.advise .adDetail{
-		font-size: 0.24rem; 
-		font-family: PingFang-SC-Medium;
-		line-height: 0.36rem; 
-		color: #666666;
-	}
-	.more{
-		width:100%;  
-		text-align: center;
-		font-size: 0.3rem;
-	}
-	.more img{
-		width: .32rem;
-   	 	height: .32rem;
-    	vertical-align: middle;
-	}  
-	.more i{
-		vertical-align: middle;
-	}
+	 
+	 
 	.banner{
 		width:100%;
-		height:6.8rem;
+		height:3.6rem;
 		position:relative;
 	}
 	.openAccount{
-		width:100%;
-		position:absolute;
-		bottom:.75rem;
-		left:0;
-		padding:0  .4rem;
-    z-index: 10;
+		width:100%; 
+		padding:0.2rem  .3rem; 
 	}
-	.openAccount span{ 
-		width: 3.18rem;
-		height: 0.8rem;
-		border-radius: 30px;clickZoom
-		border: solid 1px #fff; 
+	.openAccount img{
+		width:.37rem;
+		margin-right:.1rem;
+		vertical-align: middle;
+	}
+	.openAccount a{ 
+		width: 3.35rem;
+		height: 0.78rem; 
+		box-shadow: 0rem 0.05rem 0rem 0rem 
+		#b58f3f;
+		border-radius:3px; 
 		font-size: .3rem; 
-		color: #ff5555;
+		color: #fff;
 		text-align: center;
-		line-height:.8rem;
-    padding-left:.6rem;
-    background: #fff url("./img/demo.png")no-repeat left .6rem center;
-    background-size:.4rem .34rem;
+		line-height:.8rem; 
+	    background: #cca95e url("./img/demo.png")no-repeat left top  ;
+	    background-size:.7rem .38rem;
 	}
-	.openAccount span.two{
-		background:#fff;
-    background: #fff url("./img/real.png")no-repeat left .6rem center;
-    background-size:.4rem .34rem;
+	.openAccount a.two{ 
+	    background: #ff5555 url("./img/real.png")no-repeat right top ;
+	    background-size:1rem .38rem;
+	    box-shadow: 0rem 0.05rem 0rem 0rem 
+			#de3535;
+		padding-right: .3rem;
 	}
-	.planContainer{
+	.titleBox1{
 		width:100%;
-		height:6.8rem;
-		/* background:url("./img/index2.png") no-repeat center;
-		background-size:cover; */
-		padding:0 .3rem .9rem .3rem;
-		position:relative;
-		border-bottom:.25rem solid #e8e8e8;
+		background: url("./img/bgtrade.jpg") no-repeat top center;
+		background-size:7.5rem 1.25rem;
 	}
-	.planContainer .planBg{
-		position:absolute;
-		top:0;
-		left:0;
+	.titleBox3{
 		width:100%;
-		height:6.6rem;
+		background: url("./img/bgdownload.jpg") no-repeat top center;
+		background-size:7.5rem 1.25rem;
 	}
-	.plan{
-		width:32%;
-		height: 2rem; 
-		border-radius: 0.06rem;
-		padding-top:1.1rem; 
-		position: relative;
-	}
-	.plans .plan:nth-child(1){
-		background:#fbf3e8 url("./img/index21.png") no-repeat top .26rem center;
-		background-size:.63rem .72rem;
-	} 
-	.plans .plan:nth-child(2){
-		background:#fbf3e8 url("./img/index31.png") no-repeat top .26rem center;
-		background-size:.75rem .72rem;
-	} 
-	.plans .plan:nth-child(3){
-		background:#fbf3e8 url("./img/index41.png") no-repeat top .26rem center;
-		background-size:.76rem .73rem;
-	} 
-	.plans .plan.active:nth-child(1){
-		background:#ff5555 url("./img/index22.png") no-repeat top .26rem center;
-		background-size:.63rem .72rem;
-	} 
-	.plans .plan.active:nth-child(2){
-		background:#ff5555 url("./img/index33.png") no-repeat top .26rem center;
-		background-size:.75rem .72rem;
-	} 
-	.plans .plan.active:nth-child(3){
-		background:#ff5555 url("./img/index44.png") no-repeat top .26rem center;
-		background-size:.76rem .73rem;
-	}  
-	.plan p{
-		font-size: 0.3rem; 
-		line-height: 0.38rem; 
-		color: #686867;
-		text-align: center; 
-	} 
-	.plan.active p{
-		color:#fff;
-	}
-	.planContainer .desc{ 
-		width:92%; 
-		height: 2.2rem;
-		background: rgba(250,241,227,.7); 
-		border-radius:3px;
-		font-size:.26rem;
+	.aboutus{
 		padding:.3rem;
-		margin-top:.4rem; 
-		position: absolute;
-	    bottom: .65rem;
-	    left: 4%;
-	} 
-	.desc::after{
-		content:'';
-		position:absolute;
-		top:-.38rem;
-		left:13%; 
-		width:0;
-		height:0;
-		border-top:.2rem solid transparent;
-		border-left:.2rem solid transparent;
-		border-right:.2rem solid transparent;
-		border-bottom:.2rem solid hsla(37,70%,94%,.7);
+		color:#333;
 	}
-	.desc1::after{
-		position:absolute;
-		top:-.38rem;
-		left:50%;
-		transform:translateX(-50%);
+	.aboutus h3{
+		font-size: 0.36rem;
+		line-height: .48rem; 
 	}
-	.desc2::after{
-		position:absolute;
-		top:-.38rem;
-		left:82%; 
+	.aboutus p{
+		font-size: 0.28rem;
+		line-height: .42rem; 
+		margin-top:.3rem;
+	}
+	.titleBox4{
+		width:100%;
+		background: url("./img/bgaboutus.jpg") no-repeat top center;
+		background-size:7.5rem 1.25rem;
 	}
 	.show{display:block!important;}
 	
-	/* 投资者保障计划过渡 */
-	
-	.fade-desc-enter-active {
-	    transform: translateX(0);
-	    transition: all .5s ease;
-	}
-	.fade-desc-leave-active {
-	    transform: translateX(-100%);
-	    transition: all .5s ease;
-	}
-	.fade-desc-enter {
-	    transform: translateX(100%);
-	}
-	.fade-desc-leave {
-	    transform: translateX(0);
-	}
+	 
 	 
 </style>

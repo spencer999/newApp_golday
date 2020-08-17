@@ -48,13 +48,21 @@
 <style>
   .swiper-container {
     width: 100%;
-    height: 6.8rem;
+    height: 3.6rem;
   }
   .swiper-slide,.swiper-slide img{
     width:100%;
-    height:6.8rem;
+    height:3.6rem;
   }
-  .swiper-container .swiper-pagination-bullet-active{
-    background-color:#ff0004;
+ .swiper-pagination-bullet{
+    width: 0.56rem;
+    height: 0.05rem;
+    border-radius: 0;
+    background-color: #ffffff;
+    opacity:1;
   }
+  .swiper-pagination-bullet-active{
+    background: #ff5555;
+  }
+
 </style>

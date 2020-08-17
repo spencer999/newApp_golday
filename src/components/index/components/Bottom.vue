@@ -1,7 +1,6 @@
 
 <template>
-	<footer class="footer">
-		<img class="fauto" src="../img/officialSiteFoot.jpg" alt="" />
+	<footer class="footer"> 
 		<img class="ftitle" src="../img/officialSiteBottom.jpg" alt=""/>
 	    <ul>
 	      <li><i></i><p>中国金融服务行业<br>AAA级企业</p></li>

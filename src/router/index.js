@@ -70,7 +70,7 @@ export default new Router({
                     name: 'index',
                     component: index
                 },
-                {
+               /* {
                     path: '/aboutGolday',
                     name: 'aboutGolday',
                     component: aboutGolday,
@@ -108,7 +108,7 @@ export default new Router({
                         }
                         
                     ]
-                },
+                },*/
                 {
                     path: '/trade',
                     name: 'trade',

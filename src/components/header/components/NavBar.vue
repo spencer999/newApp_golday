@@ -4,40 +4,27 @@
 	<nav  class="navBox"  >
 		<transition name="slide-nav">
 			<div class="flex nav"  v-if="show">
- 			<router-link class="navItem" tag="div" to="/aboutGolday">
- 				<img class="pic" src="../img/nav1.png">
- 				<span class="navName">关于金盛</span>
- 			</router-link>
- 			<router-link class="navItem" tag="div" to="/trade">
- 				<img class="pic" src="../img/nav2.png">
- 				<span class="navName">交易中心</span>
- 			</router-link>
- 			<router-link class="navItem" tag="div" to="/market">
- 				<img class="pic" src="../img/nav3.png">
- 				<span class="navName">行情中心</span>
- 			</router-link>
- 			<router-link class="navItem" tag="div" to="/trade/download">  
-	 				<img class="pic" src="../img/nav4.png">
-	 				<span class="navName">平台下载</span> 
- 			</router-link>
- 			<router-link class="navItem" tag="div" to="/customer/rate"> 
-	 				<img class="pic" src="../img/nav5.png">
-	 				<span class="navName">实时汇率</span> 
- 			</router-link>
- 			<div class="navItem">
- 				<a :href="linkList.calendar"> 
-	 				<img class="pic" src="../img/nav6.png">
-	 				<span class="navName">财经日历</span>
- 				</a>
- 			</div>
- 			<router-link class="navItem" tag="div" to="/customer">
- 				<img class="pic" src="../img/nav7.png">
- 				<span class="navName">客户中心</span>
- 			</router-link>
- 			<router-link class="navItem" tag="div" to="/help">
- 				<img class="pic" src="../img/nav8.png">
- 				<span class="navName">帮助中心</span>
- 			</router-link>
+	 			<!-- <router-link class="navItem" tag="div" to="/aboutGolday">
+	 				<img class="pic" src="../img/nav1.png">
+	 				<span class="navName">关于金盛</span>
+	 			</router-link> -->
+	 			<router-link class="navItem" tag="div" to="/trade">
+	 				<img class="pic" src="../img/nav2.png">
+	 				<span class="navName">交易中心</span>
+	 			</router-link>
+	 			<router-link class="navItem" tag="div" to="/market">
+	 				<img class="pic" src="../img/nav3.png">
+	 				<span class="navName">行情中心</span>
+	 			</router-link>
+	 			  
+	 			<router-link class="navItem" tag="div" to="/customer">
+	 				<img class="pic" src="../img/nav7.png">
+	 				<span class="navName">客户中心</span>
+	 			</router-link>
+	 			<router-link class="navItem" tag="div" to="/help">
+	 				<img class="pic" src="../img/nav8.png">
+	 				<span class="navName">帮助中心</span>
+	 			</router-link>
 			</div>
 		</transition>
 		<!--<div class="clickZoom" @click="show = !show"></div>-->
