@@ -27,7 +27,7 @@
       }
     },
     created(){
-      this.$http.get('/Mobile/Index/bannerData')
+      this.$http.get('/apis/Mobile/Index/bannerData')
         .then((res)=>{
           console.log(res);
           this.banner=res.data;

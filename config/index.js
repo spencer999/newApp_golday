@@ -15,7 +15,7 @@ module.exports = {
             target: 'https://m.golday.com',
             changeOrigin: true,
             pathRewrite: {
-            '^/api': ''   
+            '^/apis': ''   
                             
             }
         } 

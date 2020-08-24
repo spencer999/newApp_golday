@@ -59,8 +59,7 @@
 			<li>最新公告 | {{notice.bt}}</li>
 			</router-link>
 		</ul> 
-			<!-- —— 行情中心 —— -->
-			<h2 class="title"> <i></i>  行情中心 <i></i> </h2>
+			 
 		<div class="flex pd30">
 			<div class="data" :class="{'green':item[1] == 0}"  v-for="(item,index) in graphs" :key="index"> 
 				<p class="name">{{item[0] | toTxt}}</p>
@@ -74,6 +73,74 @@
 		<section class="section">
 			<div class="titleBox1">
 				<h2 class="title"> <i></i>  实时交易参考 <i></i> </h2>
+			</div>
+			<div class="tradeBox">
+
+				<div class="ideaBox" v-for="(item,index) in teachers" :key="index">
+					<div class="avator">	
+						<img :src="item.avatar" alt="">
+						<div class="info">
+							<p class="tea">{{item.account}}</p>
+							<p class="time">{{item.time}}</p>
+						</div>
+					</div>
+					<p class="idea">{{item.content}}</p>
+				</div>
+				 
+			</div>
+		</section> 
+		<!-- 行业热点新闻 -->
+		<section>
+			<div class="titleBox2">
+				<span :class="{'active':newsTabber === true}" @click="newsTab(1)">行业热点新闻</span>
+				<span :class="{'active':newsTabber === false}" @click="newsTab(2)">实盘策略</span>
+				<span>财经日历</span>
+			</div>
+			<!-- 热点新闻 -->
+			<div class="newsBox" v-show="newsTabber">	
+				<div class="newSwiper swiper-container">
+				    <div class="swiper-wrapper"> 
+				    	
+				        <div class="swiper-slide slide"   v-for="(item,index) in newsSwiper" :key="index">
+				        <a :href="item.url">
+				           <img :src="item.home_pic">
+				        
+				         <p class="newsTitle">{{item.title}}</p>
+						<p class="newsDetail">{{item.important}}</p>
+						<p class="newsTime">2020-{{item.md}}  {{item.hi}}</p>
+						</a>
+				       </div>
+				     </div>
+				     
+				    <div class="swiper-pagination"></div>
+				 
+				      <div class="swiper-button-prev"></div>
+				      <div class="swiper-button-next"></div> 
+				</div>
+				
+			</div>
+			<!-- 实盘侧罗 -->
+			<div class="newsBox" v-show="!newsTabber">	
+				<div class="newSwiper swiper-container">
+				    <div class="swiper-wrapper"> 
+				    	
+				        <div class="swiper-slide slide"   v-for="(item,index) in panSwiper" :key="index">
+				        <a :href="item.url">
+				           <img :src="item.home_pic">
+				        
+				         <p class="newsTitle">{{item.title}}</p>
+						<p class="newsDetail">{{item.important}}</p>
+						<p class="newsTime">2020-{{item.md}}  {{item.hi}}</p>
+						</a>
+				       </div>
+				     </div>
+				     
+				    <div class="swiper-pagination"></div>
+				 
+				      <div class="swiper-button-prev"></div>
+				      <div class="swiper-button-next"></div> 
+				</div>
+				
 			</div>
 		</section>
 		<!-- ——  平台下载 —— -->
@@ -125,36 +192,51 @@
 
 <script>
 import swiper from './components/swiper' 
-import bottom from './components/Bottom'  
- 
+import bottom from './components/Bottom' 
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css'; 
 export default {
 	name: 'index',
 	data(){
 		return{ 
 			download:true, 
+			newsTabber:true,
 			notice:{
 			 	bt:null,
         		id:null
       		},
-			graphs:[],  
+      		timeStartFormat:null,
+			graphs:[], 
+			newsSwiper:[],
+			panSwiper:[],
+			teachers:[]
 		}
+	}, 
+	beforeCreated(){   
+		 this.getTimeStamp();
 	}, 
 	created(){   
 		 this.getDatas();
 	}, 
 	methods:{
-
+		newsTab(num){
+			if(num == 1){
+				this.newsTabber = true;
+			}else{
+				this.newsTabber = false;
+			}
+		},
 		tabDownload(){
 			this.download = !this.download;
 		},
 		getDatas(){
 			/*let params = new URLSearchParams();
 			params.append("p",1);*/ 
-			this.$http.post('/Mobile/Index/ptgg',1) //最新公告
+			this.$http.post('/apis/Mobile/Index/ptgg',1) //最新公告
 				.then((res)=>{  
 					this.notice  = res.data[0]; 
 				})
-			this.$http.get('/GetScript/getMGraphs') //实时行情
+			this.$http.get('/apis/GetScript/getMGraphs') //实时行情
 				.then((res)=>{   
 					let obj=res;
 					console.log(obj);
@@ -173,10 +255,38 @@ export default {
 			            }
           			}
 				});
-			 
-			 
 
+			this.$http.post('/apis/Index2020/viewpoint',this.timeStartFormat) //最新公告
+				.then((res)=>{  
+					this.teachers = res.data.records;
+				})
+			this.$http.post('/apis/Index2020/hqHot') //最新公告
+				.then((res)=>{  
+					this.newsSwiper  = res.data; 
+				}) 
+			this.$http.post('/apis/Index2020/spcl') //最新公告
+				.then((res)=>{  
+					this.panSwiper  = res.data; 
+				}) 
 			
+		},
+		getTimeStamp(){
+			let timeStartFormat;
+		    let curTime = new Date().getTime();
+		    let startDate = curTime - (7 * 3600 * 24 * 1000);
+		    startDate = new Date(startDate).toLocaleDateString();
+		    if(startDate.indexOf("年") >-1){ 
+		        startDate = startDate.replace(/年/g,'\/');  
+		    }
+		    if(startDate.indexOf("月") >-1){
+		        startDate = startDate.replace(/月/g,'\/');   
+		    }
+		    if(startDate.indexOf("日") >-1){
+		        startDate = startDate.replace(/日/g,'');    
+		    }
+		    startDate = startDate.split("/");  
+		    timeStartFormat=startDate.join("-"); 
+		    this.timeStartFormat.timeStart= timeStartFormat;
 		}
 	},
 	filters:{
@@ -212,6 +322,98 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+	.swiper-button-prev
+	.titleBox2{
+		width:100%;
+		height: 1.25rem;
+		background: url("./img/bgnews.jpg") no-repeat top center;
+		background-size:7.5rem 1.25rem;
+		display: flex;
+		padding:0 .3rem ;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.titleBox2 span{
+		height: 1.2rem;
+		line-height: 1.2rem;
+		font-size:.32rem;
+		color:#c2b5a5;
+		font-weight: bold;
+		border-bottom:.04rem solid #c2b5a5;
+	}
+	.titleBox2 span.active{
+		color:#fff; 
+	}
+	.newsBox{
+		width:100%;
+		padding:.3rem .3rem .4rem;
+		background:#fff; 
+	}
+	.newSwiper{
+		width: 6.9rem;
+		height: 5.5rem;
+	}
+	.newSwiper img{
+		width: 6.9rem;
+		height: 3rem;
+	}
+	.newsBox p{
+		color:#333;
+		font-size:.28rem; 
+	}
+	.newsTitle{  
+		font-weight: bold;
+		line-height: .5rem;
+	}
+	.newsDetail{
+		line-height: 0.42rem;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		 -webkit-box-orient:vertical;
+		 -webkit-line-clamp:3;
+	}
+	.newsBox .newsTime{
+		font-size: 0.26rem;
+		margin-top:.1rem;
+		color:#999;
+		text-align: right;
+	}
+	.tradeBox{
+		width:100%;
+		padding:0 .3rem .3rem .3rem;
+		height:6.55rem;
+		overflow-y: scroll;
+	}
+	.tradeBox .ideaBox{
+		width:100%;
+		padding-bottom: 0.3rem;
+		border-bottom: 1px solid #e8e8e8;
+	}
+	.ideaBox .avator img{
+		width:.8rem;
+		height: .8rem;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.ideaBox .avator .info{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.ideaBox .info .tea{
+		font-size: 0.3rem;
+		color: #333333;
+	}
+	.ideaBox .info .time{
+		font-size: 0.24rem;
+		color: #999;
+		line-height: 0.48rem;
+	}
+	.ideaBox .idea{
+		font-size: 0.28rem;
+		color: #333333;
+		line-height: 0.42rem;
+	}
 	.downloadTab{
 		width: 6.4rem;
 		height: 1rem;
@@ -299,7 +501,7 @@ export default {
 	}
 	.section{
 		width:100%;
-		margin:.2rem auto;
+		margin:0 auto .2rem;
 		background: #fff;
 		padding-bottom: .4rem;
 	}
