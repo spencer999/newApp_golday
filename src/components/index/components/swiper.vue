@@ -9,7 +9,7 @@
        </div>
      </div>
      <!-- 如果需要分页器 -->
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination bullet"></div>
     <!-- 如果需要导航按钮
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>-->
@@ -54,14 +54,14 @@
     width:100%;
     height:3.6rem;
   }
- .swiper-pagination-bullet{
+ .bullet span{
     width: 0.56rem;
     height: 0.05rem;
     border-radius: 0;
     background-color: #ffffff;
     opacity:1;
   }
-  .swiper-pagination-bullet-active{
+  .bullet .swiper-pagination-bullet-active{
     background: #ff5555;
   }
 

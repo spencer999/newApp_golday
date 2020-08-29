@@ -42,7 +42,7 @@
  				<img class="pic" src="./img/nav7.png">
  				<span class="navName">常见问题</span>
  			</router-link>
- 			<router-link class="navItem" tag="div" to="/help">
+ 			<router-link class="navItem" tag="div" to="/user">
  				<img class="pic" src="./img/nav8.png">
  				<span class="navName">用户之声</span>
  			</router-link>
@@ -94,56 +94,58 @@
 			<div class="titleBox2">
 				<span :class="{'active':newsTabber === true}" @click="newsTab(1)">行业热点新闻</span>
 				<span :class="{'active':newsTabber === false}" @click="newsTab(2)">实盘策略</span>
-				<span>财经日历</span>
+				<span><a href="https://m.golday.com/Mobile/Index/economic_calendar.html" target="_blank">财经日历</a></span>
 			</div>
 			<!-- 热点新闻 -->
 			<div class="newsBox" v-show="newsTabber">	
-				<div class="newSwiper swiper-container">
+				<div class="newSwiper swiper1 swiper-container">
 				    <div class="swiper-wrapper"> 
 				    	
 				        <div class="swiper-slide slide"   v-for="(item,index) in newsSwiper" :key="index">
 				        <a :href="item.url">
-				           <img :src="item.home_pic">
+				           <img :src="item.home_pic3">
 				        
-				         <p class="newsTitle">{{item.title}}</p>
-						<p class="newsDetail">{{item.important}}</p>
-						<p class="newsTime">2020-{{item.md}}  {{item.hi}}</p>
+				        <p class="newsTitle">{{item.bt}}</p>
+						<p class="newsDetail" v-html="item.zy"> </p>
+						<p class="newsTime"> {{item.sj}}</p>
 						</a>
 				       </div>
 				     </div>
 				     
-				    <div class="swiper-pagination"></div>
+				    <div class="swiper-pagination pagination pagination1"></div>
 				 
-				      <div class="swiper-button-prev"></div>
-				      <div class="swiper-button-next"></div> 
+				      <div class="swiper-button-prev prev1"></div>
+				      <div class="swiper-button-next next1"></div> 
 				</div>
 				
 			</div>
 			<!-- 实盘侧罗 -->
 			<div class="newsBox" v-show="!newsTabber">	
-				<div class="newSwiper swiper-container">
+				<div class="newSwiper swiper2 swiper-container">
 				    <div class="swiper-wrapper"> 
 				    	
 				        <div class="swiper-slide slide"   v-for="(item,index) in panSwiper" :key="index">
 				        <a :href="item.url">
-				           <img :src="item.home_pic">
+				           <img :src="item.home_pic3">
 				        
-				         <p class="newsTitle">{{item.title}}</p>
-						<p class="newsDetail">{{item.important}}</p>
-						<p class="newsTime">2020-{{item.md}}  {{item.hi}}</p>
+				        <p class="newsTitle">{{item.bt}}</p>
+						<p class="newsDetail" v-html="item.zy"> </p>
+						<p class="newsTime"> {{item.sj}} </p>
 						</a>
 				       </div>
 				     </div>
 				     
-				    <div class="swiper-pagination"></div>
+				    <div class="swiper-pagination pagination pagination2"></div>
 				 
-				      <div class="swiper-button-prev"></div>
-				      <div class="swiper-button-next"></div> 
+				      <div class="swiper-button-prev prev2"></div>
+				      <div class="swiper-button-next next2"></div> 
 				</div>
 				
 			</div>
 		</section>
 		<!-- ——  平台下载 —— -->
+
+
 		<section class="section">
 			<div class="titleBox3">
 				<h2 class="title"> <i></i>  平台下载 <i></i> </h2>
@@ -170,8 +172,8 @@
 				</div>
 			</div>
 			<div class="flex appandriod">
-				<span><img src="./img/apple.png" alt=""> iOS 下载</span>
-				<span><img src="./img/Android.png" alt="">  Android 下载</span>
+				<span> <a href="https://www.golday.hk/Home/Qr/download_QR.html" target="_blank"><img src="./img/apple.png" alt=""> iOS 下载</a></span>
+				<span> <a href="https://www.golday.hk/Home/Qr/download_QR.html" target="_blank"><img src="./img/Android.png" alt="">  Android 下载</a></span>
 			</div>
 		</section>
 		<!-- ——  关于我们 —— -->
@@ -211,12 +213,10 @@ export default {
 			panSwiper:[],
 			teachers:[]
 		}
-	}, 
-	beforeCreated(){   
-		 this.getTimeStamp();
-	}, 
-	created(){   
-		 this.getDatas();
+	},  
+	created(){ 
+		this.getTimeStamp();  
+		this.getDatas();
 	}, 
 	methods:{
 		newsTab(num){
@@ -256,22 +256,46 @@ export default {
           			}
 				});
 
-			this.$http.post('/apis/Index2020/viewpoint',this.timeStartFormat) //最新公告
+			this.$http.post('/apis/Index2020/viewpoint',{timeStar:this.timeStartFormat}) //实时交易
 				.then((res)=>{  
 					this.teachers = res.data.records;
 				})
-			this.$http.post('/apis/Index2020/hqHot') //最新公告
+			this.$http.post('/apis/Mobile/Index/hyrdxw',1) //行情热点
 				.then((res)=>{  
-					this.newsSwiper  = res.data; 
+					this.newsSwiper  = res.data.slice(0,3);
+					this.$nextTick(() => {
+		            // DOM更新了
+		            // swiper重新初始化
+		             /*eslint-disable no-new */
+		            let  mySwiper1 = new Swiper('.swiper1', {
+		            	autoplay: 2000,
+		             	pagination : '.pagination1',
+		             	prevButton:'.prev1',
+						nextButton:'.next1',
+		            })
+		          }) 
 				}) 
-			this.$http.post('/apis/Index2020/spcl') //最新公告
+			this.$http.post('/apis/Mobile/Index/spcl',1) //实盘策略
 				.then((res)=>{  
-					this.panSwiper  = res.data; 
+					 this.panSwiper  =res.data.slice(0,3);
+					this.$nextTick(() => {
+
+			            // DOM更新了
+			            // swiper重新初始化
+			            /* eslint-disable no-new */
+			            let  mySwiper2 = new Swiper('.swiper2', {
+			            	autoplay: 2000,
+			             	pagination: '.pagination2',
+			            	prevButton:'.prev2',
+							nextButton:'.next2',
+			            })
+			            
+			        })
 				}) 
 			
 		},
 		getTimeStamp(){
-			let timeStartFormat;
+			let timeStart;
 		    let curTime = new Date().getTime();
 		    let startDate = curTime - (7 * 3600 * 24 * 1000);
 		    startDate = new Date(startDate).toLocaleDateString();
@@ -285,8 +309,8 @@ export default {
 		        startDate = startDate.replace(/日/g,'');    
 		    }
 		    startDate = startDate.split("/");  
-		    timeStartFormat=startDate.join("-"); 
-		    this.timeStartFormat.timeStart= timeStartFormat;
+		    timeStart=startDate.join("-"); 
+		    this.timeStartFormat= timeStart;
 		}
 	},
 	filters:{
@@ -321,8 +345,42 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-	.swiper-button-prev
+<style>
+	.pagination{
+		top:1.8rem;
+		left:auto!important;
+		right:.3rem;
+		width:2rem!important;
+		height: 1rem;
+	}
+	.swiper-pagination .swiper-pagination-bullet-active{
+   		background: #ff5555;
+  	}
+	.swiper-pagination span{
+		width:.18rem;
+		height: .18rem;
+		border-radius: 30px;
+		opacity: 1;
+		background:#dee0e8;
+
+	} 
+	.swiper-button-prev{
+		width:.27rem;
+		height: .49rem;
+		background: url("./img/swiperLeft.png") no-repeat top center;
+		background-size:.27rem .49rem;
+	    left: 10px;
+	    top:1.7rem;
+	}
+	.swiper-button-next{
+		width:.27rem;
+		height: .49rem;
+		background: url("./img/swiperLeft.png") no-repeat top center;
+		background-size:.27rem .49rem;
+		transform: rotate(180deg);
+	    right: 10px;
+	    top:1.7rem;
+	}
 	.titleBox2{
 		width:100%;
 		height: 1.25rem;
@@ -349,11 +407,11 @@ export default {
 		padding:.3rem .3rem .4rem;
 		background:#fff; 
 	}
-	.newSwiper{
+	.newsBox .newSwiper{
 		width: 6.9rem;
 		height: 5.5rem;
 	}
-	.newSwiper img{
+	.newSwiper a img{
 		width: 6.9rem;
 		height: 3rem;
 	}
@@ -364,6 +422,10 @@ export default {
 	.newsTitle{  
 		font-weight: bold;
 		line-height: .5rem;
+		width: 100%;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 	.newsDetail{
 		line-height: 0.42rem;

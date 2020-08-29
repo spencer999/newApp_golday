@@ -2,7 +2,7 @@
 	<section class="goBack"> 	
 		<div class="flex goBack"> 
 			<span class="back" @click="goBack"> 返回 </span>
-			<h2 class="title"> {{this.subTitle}} </h2>
+			<h2 class="backTitle"> {{this.subTitle}} </h2>
 			<i class="none"> </i>
 		</div>  
 	</section>
@@ -37,7 +37,7 @@ export default {
 		background:url("../img/back.jpg") no-repeat left .2rem center;
 		background-size:.18rem .31rem;
 	}
-	.title{
+	.backTitle{
 		color:#323232;
 		font-size:.34rem;
 		width: 2rem;

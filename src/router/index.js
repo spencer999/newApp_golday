@@ -47,7 +47,7 @@ import gdHonor from '@/components/aboutGolday/GdHonor'
 import introduce from '@/components/aboutGolday/Introduce'
 import investor from '@/components/aboutGolday/Investor'
 import news from '@/components/aboutGolday/News'
-
+import user from '@/components/aboutGolday/User'
 /*三级路由*/
 
 import industry from '@/components/customer/components/Industry'
@@ -172,6 +172,11 @@ export default new Router({
                     path: '/customer',
                     name: 'customer',
                     component: customer
+                },
+                 {
+                    path: '/user',
+                    name: 'user',
+                    component: user
                 },
                 {
                     path: '/help',
