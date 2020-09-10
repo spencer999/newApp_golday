@@ -31,15 +31,17 @@ export default {
   		submitInfo(){
   			if(this.advise === null){
   				alert("请输入您的意见或建议，我们会尽快回复您。");
+  				return false;
   			}else if(/\d(8,11)/.test(this.phone)){
-  				alert("请输入正确的交易账号/手机号")
+  				alert("请输入正确的交易账号/手机号");
+  				return false;
   			}
   			 
-  			/*this.$http.post("/Mobile/Index/jsxw",this.page)
+  			this.$http.post("/apis/Mobile/Index/fadeback",{login:this.phone,complDescription:this.advise})
   				.then((res)=>{ 
   					console.log(res);
-  					this.newsList = res.data;
-  				});*/
+  					alert(res.msg);
+  				});
   		} 
   	}
 }

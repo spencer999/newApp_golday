@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-	.footer{width:7.5rem;background:#42403f;padding:0!important; }
+	.footer{width:7.5rem;background:#42403f;padding:0.5rem 0 0 0!important; }
 	.footer .fauto{width:100%;display:block;}
 	.footer .ftitle{width:6.3rem;height:.7rem;margin:.5rem auto 0;display:block;}
 	.footer ul{width:100%;display: flex;justify-content: space-between;flex-wrap:wrap; border-left:1px solid #484645;box-sizing:border-box;padding:.3rem .3rem .5rem;}

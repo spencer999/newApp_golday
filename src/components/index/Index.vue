@@ -443,8 +443,8 @@ export default {
 	}
 	.tradeBox{
 		width:100%;
-		padding:0 .3rem .3rem .3rem;
-		height:6.55rem;
+		padding:0 .3rem 0rem .3rem;
+		/*height:6.55rem;*/
 		overflow-y: scroll;
 	}
 	.tradeBox .ideaBox{
