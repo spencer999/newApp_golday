@@ -12,38 +12,38 @@
  				<span class="navName">关于金盛</span>
  			</router-link> -->
  			<router-link class="navItem" tag="div" to="/customer/discount">
- 				<img class="pic" src="./img/nav1.png">
+ 				<div class="pic"><img src="./img/nav1.png"></div>
  				<span class="navName">优惠活动</span>
  			</router-link>
  			<router-link class="navItem" tag="div" to="/trade/classify">
- 				<img class="pic" src="./img/nav2.png">
+ 				<div class="pic"><img src="./img/nav2.png"></div>
  				<span class="navName">交易产品</span>
  			</router-link>
  			<router-link class="navItem" tag="div" to="/trade/rules">
- 				<img class="pic" src="./img/nav3.png">
+ 				<div class="pic"><img src="./img/nav3.png"></div>
  				<span class="navName">交易细则</span>
  			</router-link>
  			<router-link class="navItem" tag="div" to="/trade/download">
- 				<img class="pic" src="./img/nav4.png">
+ 				<div class="pic"><img src="./img/nav4.png"></div>
  				<span class="navName">平台下载</span>
  			</router-link>
  			<div class="navItem">
  				<a href="https://vip.golday.hk/Mobile/Index/login.html">
- 					<img class="pic" src="./img/nav5.png">
+ 					<div class="pic"><img src="./img/nav5.png"></div>
  					<span class="navName">用户中心</span>
  				</a>
  			</div> 
  			<router-link class="navItem" tag="div" to="/customer/school">
- 				<img class="pic" src="./img/nav6.png">
+ 				<div class="pic"><img src="./img/nav6.png"></div>
  				<span class="navName">金盛课堂</span>
  			</router-link>
  			  
  			<router-link class="navItem" tag="div" to="/help">
- 				<img class="pic" src="./img/nav7.png">
+ 				<div class="pic"><img src="./img/nav7.png"></div>
  				<span class="navName">常见问题</span>
  			</router-link>
  			<router-link class="navItem" tag="div" to="/user">
- 				<img class="pic" src="./img/nav8.png">
+ 				<div class="pic"><img src="./img/nav8.png"></div>
  				<span class="navName">用户之声</span>
  			</router-link>
 		</div>
@@ -51,7 +51,7 @@
 		<div class="flex openAccount">
 
 			<a href="https://www.golday.hk/Mobile/Activity/planmt.html" onclick="ga ('send','event','m_index','open_demo_account','content_first');" ><img src="./img/demoimg.png" alt=""><span>模拟开户</span></a>
-			<a href="https://www.golday.com/Mobile/Index/real_accountt.html" class="two" onclick="ga ('send','event','m_index','open_real_account','content_first');"><img src="./img/realimg.png" alt=""><span >真实开户</span></a>
+			<a href="https://m.golday9999.com/Mobile/Index/real_accountt.html" class="two" onclick="ga ('send','event','m_index','open_real_account','content_first');"><img src="./img/realimg.png" alt=""><span >真实开户</span></a>
 		</div>
 		<!-- 最新公告 -->
 		<ul class="notice">
@@ -72,7 +72,7 @@
 		<!-- 实时交易参考 -->
 		<section class="section">
 			<div class="titleBox1">
-				<h2 class="title"> <i></i>  实时交易参考 <i></i> </h2>
+				<h2 class="bigtitle"> <i></i>  实时交易参考 <i></i> </h2>
 			</div>
 			<div class="tradeBox">
 
@@ -94,51 +94,47 @@
 			<div class="titleBox2">
 				<span :class="{'active':newsTabber === true}" @click="newsTab(1)">行业热点新闻</span>
 				<span :class="{'active':newsTabber === false}" @click="newsTab(2)">实盘策略</span>
-				<span><a href="https://m.golday.com/Mobile/Index/economic_calendar.html" target="_blank">财经日历</a></span>
+				<span><a href="https://m.golday9999.com/Mobile/Index/economic_calendar.html" target="_blank">财经日历</a></span>
 			</div>
 			<!-- 热点新闻 -->
-			<div class="newsBox" v-show="newsTabber">	
+			<div class="newsBox" v-if="newsTabber">	
 				<div class="newSwiper swiper1 swiper-container">
 				    <div class="swiper-wrapper"> 
-				    	
-				        <div class="swiper-slide slide"   v-for="(item,index) in newsSwiper" :key="index">
-				        <a :href="item.url">
+				    	 
+				       	<router-link :to="{path:'/detail',query:{id:item.id,title:'热点新闻',type:9}}"  tag="div"   class="swiper-slide slide"   v-for="(item,index) in newsSwiper" :key="index">
 				           <img :src="item.home_pic3">
 				        
-				        <p class="newsTitle">{{item.bt}}</p>
-						<p class="newsDetail" v-html="item.zy"> </p>
-						<p class="newsTime"> {{item.sj}}</p>
-						</a>
-				       </div>
+					        <p class="newsTitle">{{item.bt}}</p>
+							<p class="newsDetail" v-html="item.zy"> </p>
+							<p class="newsTime"> {{item.sj}}</p>
+						</router-link> 
+				        
 				     </div>
 				     
 				    <div class="swiper-pagination pagination pagination1"></div>
 				 
-				      <div class="swiper-button-prev prev1"></div>
-				      <div class="swiper-button-next next1"></div> 
+				      <div class=" prev1"></div>
+				      <div class=" next1"></div> 
 				</div>
 				
 			</div>
 			<!-- 实盘侧罗 -->
-			<div class="newsBox" v-show="!newsTabber">	
+			<div class="newsBox" v-if="!newsTabber">	
 				<div class="newSwiper swiper2 swiper-container">
 				    <div class="swiper-wrapper"> 
-				    	
-				        <div class="swiper-slide slide"   v-for="(item,index) in panSwiper" :key="index">
-				        <a :href="item.url">
-				           <img :src="item.home_pic3">
-				        
-				        <p class="newsTitle">{{item.bt}}</p>
-						<p class="newsDetail" v-html="item.zy"> </p>
-						<p class="newsTime"> {{item.sj}} </p>
-						</a>
-				       </div>
+				    	 
+				        <router-link :to="{path:'/detail',query:{id:item.id,title:'实盘策略',type:7}}"  tag="div"   class="swiper-slide slide"   v-for="(item,index) in panSwiper" :key="index">
+				            <img :src="item.home_pic3"> 
+					        <p class="newsTitle">{{item.bt}}</p>
+							<p class="newsDetail" v-html="item.zy"> </p>
+							<p class="newsTime"> {{item.sj}} </p>
+						</router-link>  
 				     </div>
 				     
 				    <div class="swiper-pagination pagination pagination2"></div>
 				 
-				      <div class="swiper-button-prev prev2"></div>
-				      <div class="swiper-button-next next2"></div> 
+				      <div class=" prev2"></div>
+				      <div class=" next2"></div> 
 				</div>
 				
 			</div>
@@ -148,7 +144,7 @@
 
 		<section class="section">
 			<div class="titleBox3">
-				<h2 class="title"> <i></i>  平台下载 <i></i> </h2>
+				<h2 class="bigtitle"> <i></i>  平台下载 <i></i> </h2>
 			</div>
 			<div class="downloadTab">
 				<div class="tab a1" :class="{'active':download === true}" @click="tabDownload()">
@@ -159,32 +155,56 @@
 					<p class="p1">MT4平台下载</p>
 					<p class="p2">国际通用交易软件</p>
 				</div>
+				
 			</div>
 			<div class="downloadBox">
 				<div class="download" v-if="download">
-					<p class="left">
-						<b class="big">金盛贵金属APP</b> <b class="ruby">集开户、交易、存取款、实时报价、行情播报、专家分析、客服咨询</b> 等功能于一身，随时随地手机交易，即时把握最佳盈利时机！ 
-					</p>
-					<img class="right" src="./img/downapp.png" alt="">
+					<div>
+						<p class="left">
+							<b class="big">金盛贵金属APP</b> <b class="ruby">集开户、交易、存取款、实时报价、行情播报、专家分析、客服咨询</b> 等功能于一身，随时随地手机交易，即时把握最佳盈利时机！ 
+						</p>
+						<img class="right" src="./img/downapp.png" alt="">
+					</div>
+					<div class="flex appandriod">
+						<span> <a href="https://www.golday.hk/Home/Qr/download_QR.html" target="_blank"><img src="./img/apple.png" alt=""> iOS 下载</a></span>
+						<span> <a href="https://www.golday.hk/Home/Qr/download_QR.html" target="_blank"><img src="./img/Android.png" alt="">  Android 下载</a></span>
+					</div>
 				</div>
 				<div class="download" v-if="!download">
 					<img class="mt4img" src="./img/downmt4.jpg" alt="">
+					<div class="flex appandriod">
+						<span> <a href="https://www.golday9999.com/Mobile/Activity/download_mt4_QR.html" target="_blank"><img src="./img/apple.png" alt=""> iOS 下载</a></span>
+						<span> <a href="https://www.golday9999.com/Mobile/Activity/download_mt4_QR.html" target="_blank"><img src="./img/Android.png" alt="">  Android 下载</a></span>
+					</div>
 				</div>
+				
 			</div>
-			<div class="flex appandriod">
-				<span> <a href="https://www.golday.hk/Home/Qr/download_QR.html" target="_blank"><img src="./img/apple.png" alt=""> iOS 下载</a></span>
-				<span> <a href="https://www.golday.hk/Home/Qr/download_QR.html" target="_blank"><img src="./img/Android.png" alt="">  Android 下载</a></span>
-			</div>
+			
 		</section>
 		<!-- ——  关于我们 —— -->
 		<section class="section">  
 			<div class="titleBox4">
-				<h2 class="title"> <i></i>  关于我们 <i></i> </h2>
+				<h2 class="bigtitle"> <i></i>  关于我们 <i></i> </h2>
 			</div>
 			<div class="aboutus">
-				<h3>6年稳健运营<br>香港金银业贸易场AA类会员047号行员</h3>
-				<p>金盛贵金属(www.golday.com)自成立以来，先后荣获 【最具投资者信赖】、【行业类十佳企业奖】、【最具创新大奖】、【创新应用系统奖】、【年度优秀交易平台】等多项荣誉，足以彰显金盛贵金属的资质和综合实力，且单笔交易0.1手以上均提供【交易编码】，有据可查，保证所有交易公开透明，受到行业和投资者的充分认可与肯定。</p>
+				<h3>7年稳健运营<br>香港金银业贸易场AA类会员047号行员</h3>
+				<p>金盛贵金属(m.golday9999.com)自成立以来，先后荣获 【最具投资者信赖】、【行业类十佳企业奖】、【最具创新大奖】、【创新应用系统奖】、【年度优秀交易平台】等多项荣誉，足以彰显金盛贵金属的资质和综合实力，且单笔交易0.1手以上均提供【交易编码】，有据可查，保证所有交易公开透明，受到行业和投资者的充分认可与肯定。</p>
 			</div>
+			<img class="matop" src="./img/matop.jpg" alt="">
+			<div class="maflex">
+				<div class="maitem">
+					<img class="maimg" src="./img/hkgolday.png" alt=""><!-- 
+					<input type="hidden" class="hide"  id="copy1" value="goldaycs1"> -->
+					<span class="copy copy1" data-clipboard-text="goldaycs1" @click="copy('copy1')"></span>
+				</div>
+				<div class="maitem">
+					<img class="maimg" src="./img/bb1.png" alt=""><!-- 
+					<input type="hidden"  class="hide" id="copy2" value="800067971"> -->
+					<span class="copy copy2" data-clipboard-text="800067971" @click="copy('copy2')"></span>
+				</div>
+				
+			</div>
+			
 		</section>
 		 
 
@@ -196,6 +216,7 @@
 import swiper from './components/swiper' 
 import bottom from './components/Bottom' 
 import Swiper from 'swiper';
+import Clipboard from 'clipboard'
 import 'swiper/dist/css/swiper.min.css'; 
 export default {
 	name: 'index',
@@ -211,14 +232,25 @@ export default {
 			graphs:[], 
 			newsSwiper:[],
 			panSwiper:[],
-			teachers:[]
+			teachers:[],
+			copyTxt1:"goldaycs1",
+			copyTxt2:"800067971"
 		}
 	},  
 	created(){ 
-		this.getTimeStamp();  
+		/*this.getTimeStamp(); */ 
 		this.getDatas();
 	}, 
 	methods:{
+		copy(copyClass){
+      		let clipboard = new Clipboard('.'+copyClass);
+     		clipboard.on('success', e => {
+        	console.log('复制成功', e)
+	        alert("复制成功！");
+       		 // 释放内存
+        	clipboard.destroy();
+      		})
+      	},	
 		newsTab(num){
 			if(num == 1){
 				this.newsTabber = true;
@@ -229,14 +261,16 @@ export default {
 		tabDownload(){
 			this.download = !this.download;
 		},
+		 
 		getDatas(){
 			/*let params = new URLSearchParams();
 			params.append("p",1);*/ 
-			this.$http.post('/apis/Mobile/Index/ptgg',1) //最新公告
+			this.$http.post('/Mobile/Index/ptgg',1) //最新公告
 				.then((res)=>{  
 					this.notice  = res.data[0]; 
 				})
-			this.$http.get('/apis/GetScript/getMGraphs') //实时行情
+
+			this.$http.get('/Home/GetScript/getMGraphs') //实时行情
 				.then((res)=>{   
 					let obj=res;
 					console.log(obj);
@@ -256,11 +290,11 @@ export default {
           			}
 				});
 
-			this.$http.post('/apis/Index2020/viewpoint',{timeStar:this.timeStartFormat}) //实时交易
+			this.$http.get('/Home/Index2020/viewpoint') //实时交易
 				.then((res)=>{  
 					this.teachers = res.data.records;
 				})
-			this.$http.post('/apis/Mobile/Index/hyrdxw',1) //行情热点
+			this.$http.post('/Mobile/Index/hyrdxw',1) //行情热点
 				.then((res)=>{  
 					this.newsSwiper  = res.data.slice(0,3);
 					this.$nextTick(() => {
@@ -275,7 +309,7 @@ export default {
 		            })
 		          }) 
 				}) 
-			this.$http.post('/apis/Mobile/Index/spcl',1) //实盘策略
+			this.$http.post('/Mobile/Index/spcl',1) //实盘策略
 				.then((res)=>{  
 					 this.panSwiper  =res.data.slice(0,3);
 					this.$nextTick(() => {
@@ -294,7 +328,7 @@ export default {
 				}) 
 			
 		},
-		getTimeStamp(){
+		/*getTimeStamp(){
 			let timeStart;
 		    let curTime = new Date().getTime();
 		    let startDate = curTime - (7 * 3600 * 24 * 1000);
@@ -311,7 +345,7 @@ export default {
 		    startDate = startDate.split("/");  
 		    timeStart=startDate.join("-"); 
 		    this.timeStartFormat= timeStart;
-		}
+		}*/
 	},
 	filters:{
 		toTxt:(value)=>{
@@ -346,6 +380,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+	
 	.pagination{
 		top:1.8rem;
 		left:auto!important;
@@ -361,18 +396,24 @@ export default {
 		height: .18rem;
 		border-radius: 30px;
 		opacity: 1;
+		margin: 0 .1rem;
 		background:#dee0e8;
 
 	} 
-	.swiper-button-prev{
+	.prev1,.prev2{
 		width:.27rem;
 		height: .49rem;
 		background: url("./img/swiperLeft.png") no-repeat top center;
 		background-size:.27rem .49rem;
 	    left: 10px;
 	    top:1.7rem;
+	    position: absolute;
+	    right: auto;
+	    margin-top: -22px;
+	    z-index: 10;
+	    cursor: pointer;
 	}
-	.swiper-button-next{
+	.next1,.next2{
 		width:.27rem;
 		height: .49rem;
 		background: url("./img/swiperLeft.png") no-repeat top center;
@@ -380,6 +421,11 @@ export default {
 		transform: rotate(180deg);
 	    right: 10px;
 	    top:1.7rem;
+	    position: absolute;
+	     
+	    margin-top: -22px;
+	    z-index: 10;
+	    cursor: pointer;
 	}
 	.titleBox2{
 		width:100%;
@@ -397,10 +443,11 @@ export default {
 		font-size:.32rem;
 		color:#c2b5a5;
 		font-weight: bold;
-		border-bottom:.04rem solid #c2b5a5;
+		
 	}
 	.titleBox2 span.active{
 		color:#fff; 
+		border-bottom:.04rem solid #c2b5a5;
 	}
 	.newsBox{
 		width:100%;
@@ -409,7 +456,7 @@ export default {
 	}
 	.newsBox .newSwiper{
 		width: 6.9rem;
-		height: 5.5rem;
+		height: 6rem;
 	}
 	.newSwiper a img{
 		width: 6.9rem;
@@ -444,7 +491,7 @@ export default {
 	.tradeBox{
 		width:100%;
 		padding:0 .3rem 0rem .3rem;
-		/*height:6.55rem;*/
+		height:6.55rem;
 		overflow-y: scroll;
 	}
 	.tradeBox .ideaBox{
@@ -517,6 +564,7 @@ export default {
 		justify-content: space-between;
 		align-items: center;
 		padding:0 .3rem;
+		flex-wrap: wrap;
 	}
 	.download .mt4img{
 		width:6.9rem ;  
@@ -524,9 +572,10 @@ export default {
 	.download .right{
 		width: 3.44rem;
 		height: 4.3rem;
+		vertical-align: middle;
 	}
 	.download .left{
-		margin-right: .3rem;
+		width: 3rem;
 		font-size: 0.28rem;
 		color:#333;
 		vertical-align:middle;
@@ -541,7 +590,10 @@ export default {
 		font-size: 0.28rem;
 		color: #ff5555;
 	}
-	.appandriod{padding:0 .3rem;}
+	.appandriod{
+		width:100%;
+		margin-top: .3rem;
+	}
 	.appandriod span{
 		width: 3.35rem;
 		height: 0.78rem;
@@ -571,13 +623,23 @@ export default {
 	.nav{
 		width:100%;
 		padding: 0 .3rem .3rem;
-   		 margin-top: .2rem;
+   		  
 		background:#fff; 
 		box-shadow: 0 0 4px rgba(0,0,0,.2);
 		-webkit-box-shadow: 0 0 4px rgba(0,0,0,.2);
 	}
- 	.nav .pic{
-		width:.62rem; 
+	.nav .pic{
+		width:.9rem;
+		height: .9rem;
+		border-radius: 50%;
+		background:#fbf2e9;
+		text-align: center;
+		line-height: .9rem;
+		display: inline-block;
+	}
+ 	.nav .pic img{
+		width:.43rem; 
+		vertical-align: middle;
 	}
 	.nav .navItem{
 		width:1.5rem;
@@ -606,7 +668,7 @@ export default {
 	    text-overflow:ellipsis;
 	    white-space:nowrap;
 	}
-	.title{ 
+	.bigtitle{ 
 		font-size: 0.44rem;  
 		color: #fff;
 		text-align: center;  
@@ -614,7 +676,7 @@ export default {
 		padding:.4rem 0;  
 		position: relative;
 	} 
-	.title i{
+	.bigtitle i{
 		display:inline-block;
 		width: 0.7rem;
 		height: 0.02rem; 
@@ -632,7 +694,7 @@ export default {
 		color: #ff3334; 
 	} 
 	.data.green{
-		color: #34cc99;
+		color: #33cc99;
 	}
 	.data .name{
 		font-size: .24rem;
@@ -711,7 +773,31 @@ export default {
 		background-size:7.5rem 1.25rem;
 	}
 	.show{display:block!important;}
-	
+	.matop{
+		width:4.46rem;
+		height: .64rem;
+		margin:0 auto;
+		display: block;
+	}
+	.maflex{
+		display: flex;
+		justify-content: space-between;
+		padding:.3rem .37rem 0;
+	}
+	.maitem{
+		position: relative;
+	}
+	.copy{
+		position: absolute;
+		right:0;
+		bottom:.2rem;
+		width:1rem;
+		height: .8rem; 
+	}
+	.maimg{
+		width:3.2rem;
+		height: 3.9rem;
+	}
 	 
 	 
 </style>

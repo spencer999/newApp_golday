@@ -2,7 +2,7 @@
 <div class="marketNav wrapper" ref="wrapper">
 	<div class="content flex">
 		<router-link tag="span"  v-for="(item ,index) in navList" :key="index" :to="item.path" replace>{{item.tag}}</router-link>
-		<a href="https://m.golday.com/Mobile/Index/economic_calendar.html"> <span>财经日历</span></a>
+		<a href="https://m.golday9999.com/Mobile/Index/economic_calendar.html"> <span>财经日历</span></a>
 	</div>
 </div> 
 </template>

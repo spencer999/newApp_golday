@@ -11,7 +11,7 @@ promise.polyfill();//兼容低版本ios post无法请求
 Vue.config.productionTip = false
 
 //配置默认根路径
-/*axios.defaults.baseURL="https://m.golday9999.com";*/
+axios.defaults.baseURL="https://m.golday9999.com";
 Vue.prototype.$http = axios;   
 axios.interceptors.response.use(res => {
 	//console.log('响应:', res.config.url, res)

@@ -4,7 +4,7 @@ import home from '@/components/index/Home'
 
 /*一级路由*/
 import index from '@/components/index/index'
-import aboutGolday from '@/components/aboutGolday/AboutGolday'
+/*import aboutGolday from '@/components/aboutGolday/AboutGolday'*/
 import trade from '@/components/trade/Trade'
 import market from '@/components/market/Market'
 import customer from '@/components/customer/Customer'
@@ -41,12 +41,12 @@ import deal from '@/components/help/Deal'
 import flatForm from '@/components/help/FlatForm'
 import other from '@/components/help/Other'
     /*关于金盛*/
-import contactUs from '@/components/aboutGolday/ContactUs'
+/*import contactUs from '@/components/aboutGolday/ContactUs'
 import fundSecurity from '@/components/aboutGolday/FundSecurity'
 import gdHonor from '@/components/aboutGolday/GdHonor'
 import introduce from '@/components/aboutGolday/Introduce'
 import investor from '@/components/aboutGolday/Investor'
-import news from '@/components/aboutGolday/News'
+import news from '@/components/aboutGolday/News'*/
 import user from '@/components/aboutGolday/User'
 /*三级路由*/
 
@@ -285,7 +285,7 @@ export default new Router({
             component: detail
         },
 
-        {path: "*", redirect: "http://www.golday.biz/app/index.html"}
+        {path: "*", redirect: "https://m.golday9999.com/Mobile/Test66/index.html"}
     ],
     linkActiveClass:'active',
     mode:'hash',

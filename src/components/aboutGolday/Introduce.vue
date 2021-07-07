@@ -3,7 +3,7 @@
 		<section class="container">
 			<video class="video" poster="./img/video.jpg" controls src="http://1251587264.vod2.myqcloud.com/4ad8a7d0vodtransgzp1251587264/e3bddfc99031868222975253471/f0.f30.mp4"></video>
 			<p class="conText"> 香港金盛贵金属有限公司（以下简称为“金盛贵金属”）注册成立于香港，作为香港金银业贸易场认可的专业电子交易商，金盛贵金属致力为广大投资者打造优质可靠的贵金属投资服务平台。</p>
-      		<p class="conText">金盛贵金属(www.golday.com)是香港金银业贸易场AA类会员第047号行员，随着百年历史的香港金银业贸易场认可的电子交易商。单笔交易0.1手以上均提供「交易编码」，有据可查，保证所有交易公开透明。</p>
+      		<p class="conText">金盛贵金属(m.golday9999.com)是香港金银业贸易场AA类会员第047号行员，随着百年历史的香港金银业贸易场认可的电子交易商。单笔交易0.1手以上均提供「交易编码」，有据可查，保证所有交易公开透明。</p>
 		</section>
 
 		<section class="container" v-for="(item,index) in conList" :key="index">

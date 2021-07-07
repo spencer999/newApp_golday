@@ -5,8 +5,8 @@
 			<p class="p1">地址 : 香港九龙尖沙咀广东道9号海港城港威大厦第六座1605-06 室</p>
 			<p class="p1">电话 : +852-3758 2228</p>
 			<p class="p1">传真 : +852-3468 7777</p>
-			<p class="p1">E-mail : cs@golday.com</p>
-			<p class="p1">网址 : www.golday.com</p>
+			<p class="p1">E-mail : cs@golday9999.com</p>
+			<p class="p1">网址 : m.golday9999.com</p>
 			<p class="p1">QQ : 800067971</p>
 			<div class="flex">
 				<div class="wx">

@@ -3,7 +3,7 @@
 		<div class="container nav">
       <div class="flex">
                <!-- <div class="item">
-                    <a href="https://m.golday.com/Mobile/Index/mall.html">
+                    <a href="https://m.golday9999.com/Mobile/Index/mall.html">
                     <img class="pic" src="./img/customer_03.jpg">
                     <span class="navName">积分商城</span>
                     </a>
@@ -37,7 +37,7 @@
                     <img src="./img/customer_36.jpg" alt="积分商城">
                 </div>
             </div>
-            <a href="https://m.golday.com/Mobile/Index/mall.html">
+            <a href="https://m.golday9999.com/Mobile/Index/mall.html">
                 <div class="lookMore"><img src="../../assets/more.png" alt="查看更多"> <i>查看更多</i></div>
             </a>
         </div> -->

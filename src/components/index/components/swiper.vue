@@ -27,7 +27,7 @@
       }
     },
     created(){
-      this.$http.get('/apis/Mobile/Index/bannerData')
+      this.$http.get('/Mobile/Index/bannerData')
         .then((res)=>{
           console.log(res);
           this.banner=res.data;
@@ -54,12 +54,15 @@
     width:100%;
     height:3.6rem;
   }
+   
  .bullet span{
     width: 0.56rem;
     height: 0.05rem;
     border-radius: 0;
     background-color: #ffffff;
     opacity:1;
+     margin:0 .04rem!important;
+    font-size:0;
   }
   .bullet .swiper-pagination-bullet-active{
     background: #ff5555;

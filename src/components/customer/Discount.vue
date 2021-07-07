@@ -30,11 +30,15 @@ export default {
   		getData(){
   			this.$http.post("/Mobile/Index/zxyh", this.page)
   			.then((res)=>{ 
-  				this.discountList = res.data;
+  				if(res.data !== null && res.data.length > 0){
+  					this.discountList = res.data;
+  				}else{
+  					alert("暂无更多数据");
+  				}
+  				
   			});
   		},
-  		getMore(){
-  			alert();
+  		getMore(){ 
   			this.page++;
   			this.getData();
   		}

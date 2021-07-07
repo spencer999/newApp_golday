@@ -40,7 +40,7 @@ export default {
 			            name:'',
 			            type:'pie',
 			            hoverAnimation:false,
-			            color:['#00a003','#e84848'] ,
+			            color:['#34cc99','#e84848'] ,
 			            radius: [this.circleIn, this.circleOut],
 			            avoidLabelOverlap: false,
 			            label: {
@@ -108,10 +108,10 @@ export default {
 		color: #e84848;
 	}
 	.green .desc i{ 
-		background:#00a003;
+		background:#34cc99;
 	}
 	.green .num{ 
-		color: #00a003;
+		color: #34cc99;
 	}
 	.h2{
 		font-size: 0.3rem; 

@@ -3,7 +3,7 @@
 		<app-subHeader :subTitle="subTitle"></app-subHeader>
 		<div class="container" > 
 			<p class="detailTitle">{{detail.bt}}</p>
-      <p class="detailTime">本文编辑：金属贵金属&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{detail.time}}</p>
+      <p class="detailTime">本文编辑：金盛贵金属&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{detail.time}}</p>
 			<div class="detailDesc"  v-html="detail.nr"></div>
 		</div> 
 	</div> 
@@ -46,7 +46,14 @@ export default {
             this.url = "/Mobile/Index/spcl_detail";
         }else if(this.type == 8){
             this.url = "/Mobile/Index/jsxw_detail";
+        }else if(this.type == 9){
+            this.url = "/Mobile/Index/hyrdxw_detail";
         } 
+
+
+
+         
+
 
 		    this.getData();
   	},
@@ -78,17 +85,38 @@ export default {
         padding:.5rem .3rem 2rem .3rem;
     }
     .detailTitle{ 
-        font-size:.3rem;
-        color:#333;
+        font-size:.4rem;
+        color:#000;
+        font-weight: bold;
         margin-bottom:.35rem;
     }
     .detailTime{
       font-size:.24rem;
-      color:#333;
+      color:#908f8f;
       text-align: center;
       margin-bottom:.35rem;
     }
-    .detailDesc,.detailDesc p,.detailDesc strong,.detailDesc span,.detailDesc a{ 
+     .detailDesc .strong{
+      position: relative;
+      padding-left:0.2rem;
+      display: inline-block;
+      font-size: .35rem;
+      font-weight: bold; 
+       margin: .2rem 0;
+           color: #000;
+    }
+   /* .detailDesc  .strong::before{
+      position: absolute;
+      top:0;
+      left: 0;
+      content: "";
+      display: inline-block;  
+      width:.1rem;
+
+      height: .3rem;
+      background:orange;
+    }*/
+    .detailDesc,.detailDesc p,.detailDesc span,.detailDesc a{ 
         font-size:.26rem;
         line-height: .45rem 
     }
@@ -99,6 +127,7 @@ export default {
     .detailDesc table td{
         border:1px solid #ddd;
     }
+   
     img{
         width:100%!important;
     }

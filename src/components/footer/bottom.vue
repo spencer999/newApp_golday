@@ -1,7 +1,8 @@
 <template> 	
-	<section class="bottom" v-if="show">
+	<section class="bottom" v-if="show"> 
 		<span class="close" @click="show = !show"></span>
-    <a href="https://www.golday.hk/Home/Qr/download_QR.html"><span class="down"   onclick="ga('send','event','m_index','download_app','content_bottom')"></span></a>
+   	 	<a href="https://www.golday.hk/Home/Qr/download_QR.html"><span class="down"   onclick="ga('send','event','m_index','download_app','content_bottom')"></span></a>
+	   	 
 	</section>
 </template>
 
@@ -15,7 +16,7 @@ export default {
 	    }
     },
     methods:{
-    	goDownload:function(){ 
+    	/*goDownload:function(){ 
     		if (this.isWeixin) {
 	        	window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.jinsheng.jinsheng";
 	      	} else {
@@ -27,10 +28,10 @@ export default {
 		          window.location.href = "https://itunes.apple.com/cn/app/金盛貴金屬/id978618010";
 		        }
 	      	}
-    	},
+    	},*/
     	 // 判断是否为移动设置访问
  
-   		isMobileAccess:function(){
+   		/*isMobileAccess:function(){
 			let sUserAgent = navigator.userAgent;
 			let mobileAgents = ['Windows CE', 'iPad', 'iPhone', 'iPod', 'Android', 'android', 'Windows Phone', 'Symbian', 'BlackBerry', 'Linux'];
 			for (let i = 0, len = mobileAgents.length; i < len; i++) {
@@ -41,7 +42,7 @@ export default {
 			return false;
 	    },
 
-    	/*移动设备判断安卓||IOS*/
+    	//移动设备判断安卓||IOS
     	sysPlatform:function(){
       		let isMobile = this.isMobileAccess,
         	userAgent = navigator.userAgent.toLowerCase(),
@@ -62,7 +63,7 @@ export default {
 	      	}
     	},
 
-	    /*判断是否微信*/
+	    //判断是否微信
 	    isWeixin:function(){
 	      	let isMobile = this.isMobileAccess,
 	        userAgent = navigator.userAgent.toLowerCase();
@@ -72,22 +73,23 @@ export default {
 	      	} else {
 	        	return false;
 	      	}
-	    }
+	    }*/
 	}
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-	.bottom{
-		width:7.5rem;
-		height:1.02rem;
-		background:url("../../assets/download20.png")no-repeat center;
-		background-size:7.5rem 1.02rem;
+<style scoped> 
+	.bottom{ 
+		display: block!important;
 		position:fixed;
 		bottom:0;
-		left:0;
-		transition:all .3s;
+		left:0; 
+		z-index: 100000;
+		width:7.5rem;
+		height:1.02rem;
+		background:url("../../assets/download3.gif")no-repeat center;
+		background-size:7.5rem 1.02rem;  
 	}
 	.close{
 		width:0.45rem;

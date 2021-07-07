@@ -4,25 +4,25 @@
 	<nav  class="navBox"  >
 		<transition name="slide-nav">
 			<div class="flex nav"  v-if="show">
-	 			<!-- <router-link class="navItem" tag="div" to="/aboutGolday">
+	 			<!-- <router-link class="navItems" tag="div" to="/aboutGolday">
 	 				<img class="pic" src="../img/nav1.png">
 	 				<span class="navName">关于金盛</span>
 	 			</router-link> -->
-	 			<router-link class="navItem" tag="div" to="/trade">
-	 				<img class="pic" src="../img/nav2.png">
+	 			<router-link class="navItems" tag="div" to="/trade">
+	 				<img class="picimg" src="../img/nav2.png">
 	 				<span class="navName">交易中心</span>
 	 			</router-link>
-	 			<router-link class="navItem" tag="div" to="/market">
-	 				<img class="pic" src="../img/nav3.png">
+	 			<router-link class="navItems" tag="div" to="/market">
+	 				<img class="picimg" src="../img/nav3.png">
 	 				<span class="navName">行情中心</span>
 	 			</router-link>
 	 			  
-	 			<router-link class="navItem" tag="div" to="/customer">
-	 				<img class="pic" src="../img/nav7.png">
+	 			<router-link class="navItems" tag="div" to="/customer">
+	 				<img class="picimg" src="../img/nav7.png">
 	 				<span class="navName">客户中心</span>
 	 			</router-link>
-	 			<router-link class="navItem" tag="div" to="/help">
-	 				<img class="pic" src="../img/nav8.png">
+	 			<router-link class="navItems" tag="div" to="/help">
+	 				<img class="picimg" src="../img/nav8.png">
 	 				<span class="navName">帮助中心</span>
 	 			</router-link>
 			</div>
@@ -47,8 +47,8 @@ export default {
 	    return {
 	    	show:false ,
 	    	linkList:{ 
-	    		calendar:'http://m.golday.com/Mobile/Index/economic_calendar.html',
-	    		download:'http://m.golday.com/Mobile/Index/download.html',
+	    		calendar:'http://m.golday9999.com/Mobile/Index/economic_calendar.html',
+	    		download:'http://m.golday9999.com/Mobile/Index/download.html',
 	    	} 
 	    }
   	}, 
@@ -116,10 +116,10 @@ export default {
 		margin-left:.1rem;
 		vertical-align:middle;
 	}
-	.pic{
+	.picimg{
 		width:.62rem; 
 	}
-	.navItem{
+	.navItems{
 		width:1.5rem;
 		text-align: center;
 		font-size: 0;

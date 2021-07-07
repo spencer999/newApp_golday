@@ -6,7 +6,7 @@
 		</div>
 		<div class="imageText flex">
 			<div class="items">
-				<a href="https://m.golday.com/Mobile/Index/real_accountt.html">
+				<a href="https://m.golday9999.com/Mobile/Index/real_accountt.html">
 			 	<img class="pic" src="./img/trade1.png">
 			 	<p class="p1">真实开户</p> 
 				<p class="p2">加入金盛<br>领取开户礼包 </p>  
